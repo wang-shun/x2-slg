@@ -1,0 +1,20 @@
+a {text-decoration: none}
+
+.gm-wrap{width:100%;margin:0 auto;}
+
+.gm-wrap .gm-navigation{height:70px;width:100%;background:#DDDDDD;text-align:center;padding:5px}
+
+.gm-wrap .gm-navigation .gm-logo{height:70px;width:10%;background:url("/static/images/backgroup-logo.png");float:left}
+
+.gm-wrap .gm-navigation .gm-title{width:60%;text-align:center;float:left}
+
+.gm-wrap .gm-navigation .gm-text{width:30%;text-align:right;float:left}
+
+.gm-content{width:100%;overflow:auto;}
+
+.gm-content .gm-menu{width:10%;height:900px;background:#F0F0F0;float:left;padding:5px}
+.gm-content .gm-main{width:80%;float:left;padding:10px}
+
+.gm-foot{height:20px;width:100%;background:#DDDDDD;text-align:center;padding:5px}
+
+.error-message{margin: 4px 0 0 0;padding: 0;color: red;}

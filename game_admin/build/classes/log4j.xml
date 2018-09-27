@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+	
+	<!-- 控制台输出配置 -->
+	<appender name="console.appender" 
+		class="org.apache.log4j.ConsoleAppender">
+		<!-- 输出格式设置 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- %d:时间 %t:线程 %p:级别 %c:类名 %m:信息 %n:换行 -->
+			<param name="ConversionPattern" 
+				value="%d [%t] %p : %c - %m%n" />
+		</layout> 
+	</appender>
+	
+	<!-- 文件输出配置 -->
+	<appender name="file.appender" 
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="E:/data/logs.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<!-- 设置是否追加文件内容 -->
+		<param name="Append" value="false" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} [%t] %p - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 聊天日志文件输出配置 -->
+	<appender name="chatLog.appender" 
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${resin.home}/logs/mt3_chat.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<!-- 设置是否追加文件内容 -->
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss}%m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 用户操作日志文件输出配置 -->
+	<appender name="operateLog.appender" 
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${resin.home}/logs/mt3_operateLog.log" />
+		<param name="DatePattern" value="'.'yyyyww" />
+		<!-- 设置是否追加文件内容 -->
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}-%m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="window.appender"
+		class="org.apache.log4j.lf5.LF5Appender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} [%t] %p - %m%n" />
+		</layout>		
+	</appender>
+	
+	<category name="com.xgame">
+		<level value="DEBUG" />
+	</category>
+	
+	<category name="CHAT_LOG">
+		<level value="DEBUG"/>
+		<appender-ref ref="chatLog.appender"/>
+	</category>
+	
+	<category name="OPERATE_LOG">
+		<level value="DEBUG"/>
+		<appender-ref ref="operateLog.appender"/>
+	</category>
+	
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="console.appender" />
+		<appender-ref ref="file.appender" />
+	</root>
+</log4j:configuration>

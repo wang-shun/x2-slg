@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+						
+	<!-- <bean id="quartzJob" class="com.xgame.quartz.QuartzJob"/>
+	
+	<bean id="loadPlayer" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="quartzJob"/>
+		<property name="targetMethod" value="loadPlayer"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	
+	<bean id="loadPlayerTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="loadPlayer"/>
+		<property name="cronExpression" value="0 53 3 * * ?"/>
+	</bean>
+	
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="loadPlayerTrigger"/>
+			</list>
+		</property>
+	</bean> -->
+</beans>

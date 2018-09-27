@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+						
+	<!-- rmi服务端配置 -->
+	<bean id="remoteService" class="com.xgame.util.rmi.impl.RemoteServiceImpl" />
+	
+    <bean id="serviceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="remoteService"/>
+        <property name="service" ref="remoteService"/>
+        <property name="serviceInterface" value="com.xgame.util.rmi.RemoteService"/>
+        <property name="registryPort" value="1099"/>
+    </bean>
+	
+	<!-- rmi local客户端配置 -->
+	<bean id="localServiceClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="com.xgame.util.rmi.RemoteService"/>
+        <property name="refreshStubOnConnectFailure" value="true" />
+        <property name="lookupStubOnStartup" value="false" />
+        <property name="serviceUrl" value="rmi://localhost:1099/remoteService"/>
+    </bean>
+	
+	<!-- rmi admin客户端配置 -->
+	<bean id="remoteAdminServiceClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="com.xgame.util.rmi.AdminRmiService"/>
+        <property name="refreshStubOnConnectFailure" value="true" />
+        <property name="lookupStubOnStartup" value="false" />
+        <property name="serviceUrl" value="rmi://192.168.100.8:11098/AdminService"/>
+    </bean>
+</beans>

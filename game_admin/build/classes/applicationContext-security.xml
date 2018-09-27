@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+						http://www.springframework.org/schema/security
+						http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+	
+	<!-- 保护方法调用 -->
+	<global-method-security pre-post-annotations="enabled" />
+	
+	<!-- 资源文件不进行安全验证 -->
+	<http pattern="/static/**" security="none"/>
+	<http pattern="/login.jsp" security="none"/>
+	<http pattern="/favicon.ico" security="none"/>
+	
+	<http use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
+		
+		<headers>
+			<frame-options policy="SAMEORIGIN"/>
+		</headers>
+		
+		<!-- URL 管理 -->
+		<!-- 权限管理 -->
+		<!-- 首页 -->
+		<intercept-url pattern="/index" access="hasRole('ADMIN') or hasRole('INDEX')" />
+		<!-- 客服工具 -->
+		<intercept-url pattern="/cstools/**" access="hasRole('ADMIN') or hasRole('CSTOOLS')" />
+		<!-- 运营维护 -->
+		<intercept-url pattern="/operation/**" access="hasRole('ADMIN') or hasRole('OPERATION')" />
+		<!-- 运营活动 -->
+		<intercept-url pattern="/activities/**" access="hasRole('ADMIN') or hasRole('ACTIVITIES')" />
+		<!-- 玩家查询 -->
+		<intercept-url pattern="/playersearch/**" access="hasRole('ADMIN') or hasRole('PLAYERSEARCH')" />
+		<!-- 数据查询 -->
+		<intercept-url pattern="/datasearch/**" access="hasRole('ADMIN') or hasRole('DATASEARCH')" />
+		<!-- 玩家分析 -->
+		<intercept-url pattern="/playeranalysis/**" access="hasRole('ADMIN') or hasRole('PLAYERANALYSIS')" />
+		<!-- 收入分析 -->
+		<intercept-url pattern="/incomeanalysis/**" access="hasRole('ADMIN') or hasRole('INCOMEANALYSIS')" />
+		<!-- 消费分析 -->
+		<intercept-url pattern="/consumptionanalysis/**" access="hasRole('ADMIN') or hasRole('CONSUMPTIONANALYSIS')" />
+		<!-- 系统分析 -->
+		<intercept-url pattern="/systemanalysis/**" access="hasRole('ADMIN') or hasRole('SYSTEMANALYSIS')" />
+		<!-- 充值用户 -->
+		<intercept-url pattern="/rechargeuser/**" access="hasRole('ADMIN') or hasRole('RECHARGEPLAYER')" />
+		<!-- 后台管理 -->
+		<intercept-url pattern="/backadmin/**" access="hasRole('ADMIN') or hasRole('BACKADMIN')" />
+
+		<!-- 自定义验证filter实现自定义逻辑 验证码 session数据填入等-->
+		<custom-filter ref="validateCodeAuthenticationFilter" position="FORM_LOGIN_FILTER" />
+		
+		<!-- 登出控制 -->
+		<logout logout-url="/logout" delete-cookies="JSESSIONID" logout-success-url="/login.jsp" />
+		
+		<!-- 会话控制 -->
+		<session-management invalid-session-url="/login" session-fixation-protection="newSession">
+			<concurrency-control max-sessions="1" error-if-maximum-exceeded="false" />
+		</session-management>
+		
+		<csrf disabled="true"/>
+
+	</http>
+
+	<beans:bean id="validateCodeAuthenticationFilter" class="com.xgame.gm.service.impl.ValidateCodeUsernamePasswordAuthenticationFilter">
+		<beans:property name="filterProcessesUrl" value="/login"></beans:property>
+		<beans:property name="authenticationSuccessHandler" ref="loginLogAuthenticationSuccessHandler"></beans:property>
+		<beans:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler"></beans:property>
+		<beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
+	</beans:bean>
+	<beans:bean id="loginLogAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="defaultTargetUrl" value="/index"></beans:property>
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true"></beans:property>
+	</beans:bean>
+	<beans:bean id="simpleUrlAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<beans:property name="defaultFailureUrl" value="/login.jsp"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:constructor-arg value="/login"/>
+	</beans:bean>
+	
+	<!-- 自定义身份验证配置 -->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider ref="authenticationProvider"/>
+	</authentication-manager>
+
+	<beans:bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		
+		<beans:property name="userDetailsService" ref="userDetailsService" />
+		
+		<beans:property name="passwordEncoder">
+			<beans:bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+		</beans:property>
+		
+		<beans:property name="saltSource">
+			<beans:bean class="org.springframework.security.authentication.dao.SystemWideSaltSource">
+				<beans:property name="systemWideSalt" value="xgame" />
+			</beans:bean>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="userDetailsService" class="com.xgame.gm.service.impl.GmUserDetailService" />
+
+</beans:beans>
