@@ -1,0 +1,75 @@
+package com.log.task;
+
+import java.sql.Connection;
+import java.sql.Statement;
+
+import javax.sql.DataSource;
+
+import org.apache.log4j.Logger;
+
+import com.log.template.BaseLog;
+
+public class DBLogTask implements Runnable {
+	
+	private DataSource ds;
+	private BaseLog bean;
+	private static final Logger logger = Logger.getLogger(DBLogTask.class);
+
+	public DBLogTask(BaseLog bean, DataSource ds) {
+		this.ds = ds;
+		this.bean = bean;
+	}
+
+	public void run() {
+		String buildSql = "";
+		String buildCreateTableSql = "";
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			buildSql = this.bean.buildInsertSql();
+			connection = this.ds.getConnection();
+			statement = connection.createStatement();
+			try {
+				statement.executeUpdate(buildSql);
+			} catch (Exception e) {
+				buildCreateTableSql = this.bean
+						.buildCreateTableSql(this.bean.getTime()
+								.longValue());
+				statement.execute(buildCreateTableSql);
+				statement.executeUpdate(buildSql);
+			}
+
+			if (logger.isDebugEnabled()) {
+				logger.debug(buildCreateTableSql);
+				logger.debug(buildSql);
+			}
+		} catch (Exception e) {
+			logger.error(this.bean.getClass().getName() + ":"
+					+ e.getMessage());
+			logger.error(e + ":" + buildCreateTableSql + "\n" + buildSql);
+			this.bean.logToFile();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (Exception e2) {
+					logger.error(e2, e2);
+				}
+			}
+			if (connection != null)
+				try {
+					connection.close();
+				} catch (Exception e) {
+					logger.error(e, e);
+				}
+		}
+	}
+
+	public BaseLog getBean() {
+		return this.bean;
+	}
+
+	public void setBean(BaseLog bean) {
+		this.bean = bean;
+	}
+}

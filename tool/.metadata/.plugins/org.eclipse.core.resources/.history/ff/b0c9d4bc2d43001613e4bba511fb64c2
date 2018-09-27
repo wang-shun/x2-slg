@@ -1,0 +1,30 @@
+/*    */ package com.moloong.game.log.template.v2;
+/*    */ 
+/*    */ import com.moloong.game.log.annotation.Column;
+/*    */ import com.moloong.game.log.annotation.Template;
+/*    */ import com.moloong.game.log.template.BaseLog;
+/*    */ 
+/*    */ @Template(necessaryFields="createServerId")
+/*    */ public abstract class ServerLogTemplate extends BaseLog
+/*    */ {
+/*    */   public Integer createServerId;
+/*    */ 
+/*    */   @Column(fieldType="int", remark="创建服ID")
+/*    */   public Integer getCreateServerId()
+/*    */   {
+/* 21 */     return this.createServerId;
+/*    */   }
+/*    */ 
+/*    */   public void setCreateServerId(Integer createServerId) {
+/* 25 */     this.createServerId = createServerId;
+/*    */   }
+/*    */ 
+/*    */   public void logToFile()
+/*    */   {
+/*    */   }
+/*    */ }
+
+/* Location:           C:\Users\ye.yuan\Desktop\common-gamelog2-2.0.5-SNAPSHOT.jar
+ * Qualified Name:     com.moloong.game.log.template.v2.ServerLogTemplate
+ * JD-Core Version:    0.6.2
+ */

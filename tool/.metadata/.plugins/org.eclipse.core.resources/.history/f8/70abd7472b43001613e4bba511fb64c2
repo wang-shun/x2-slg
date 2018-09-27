@@ -1,0 +1,183 @@
+package com.moloong.game.log.util;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class TableCompar {
+	private HashMap<String, List<String>> changeMap = new HashMap();
+	private static TableCompar instance = new TableCompar();
+
+	public static TableCompar getInstance() {
+		return instance;
+	}
+
+	private TableCompar() {
+		initChangeMap();
+	}
+
+	private void initChangeMap() {
+		List<String> bigintlist = new ArrayList<>();
+		bigintlist.add("varchar");
+		bigintlist.add("longtext");
+		bigintlist.add("text");
+		bigintlist.add("bigint");
+		this.changeMap.put("bigint", bigintlist);
+
+		List<String> bitlist = new ArrayList<>();
+		bitlist.add("longtext");
+		bitlist.add("varchar");
+		bitlist.add("text");
+		bitlist.add("bigint");
+		bitlist.add("integer");
+		bitlist.add("int");
+		bitlist.add("int unsigend");
+		bitlist.add("bit");
+		this.changeMap.put("bit", bitlist);
+
+		List<String> intlist = new ArrayList<>();
+		intlist.add("longtext");
+		intlist.add("varchar");
+		intlist.add("text");
+		intlist.add("bigint");
+		intlist.add("integer");
+		intlist.add("int");
+		intlist.add("int unsigned");
+		this.changeMap.put("int", intlist);
+
+		this.changeMap.put("integer", intlist);
+
+		List<String> shortlist = new ArrayList<>();
+		shortlist.add("longtext");
+		shortlist.add("varchar");
+		shortlist.add("text");
+		shortlist.add("bigint");
+		shortlist.add("int");
+		shortlist.add("integer");
+		shortlist.add("tinyint");
+		this.changeMap.put("tinyint", shortlist);
+
+		List<String> bytelist = new ArrayList<>();
+		bytelist.add("longtext");
+		bytelist.add("varchar");
+		bytelist.add("text");
+		bytelist.add("bigint");
+		bytelist.add("int");
+		bytelist.add("short");
+		bytelist.add("integer");
+		this.changeMap.put("byte", bytelist);
+
+		List<String> varcharlist = new ArrayList<>();
+		varcharlist.add("longtext");
+		varcharlist.add("varchar");
+		varcharlist.add("text");
+		varcharlist.add("int");
+		varcharlist.add("bigint");
+		this.changeMap.put("varchar", varcharlist);
+
+		List<String> text = new ArrayList<>();
+		text.add("longtext");
+		text.add("text");
+		text.add("varchar");
+		this.changeMap.put("text", text);
+
+		List<String> longtextlist = new ArrayList<>();
+		longtextlist.add("longtext");
+		this.changeMap.put("longtext", longtextlist);
+	}
+
+	public String compartor(Connection conn1, Connection conn2,
+			String tableName1, String tableName2) {
+		return "";
+	}
+
+	public List<String> compartor(String tableName, List<ColumnInfo> source,
+			List<ColumnInfo> tableColumn) throws Exception {
+		HashMap<String, ColumnInfo> targetmap = new HashMap();
+		List notnull = new ArrayList();
+		List result = new ArrayList();
+		for (ColumnInfo columnInfo : tableColumn) {
+			targetmap.put(columnInfo.getName(), columnInfo);
+			if ((columnInfo.getNullable() != null)
+					&& (!columnInfo.getNullable().booleanValue())) {
+				notnull.add(columnInfo.getName());
+			}
+		}
+		for (ColumnInfo sourceinfo : source) {
+			ColumnInfo columnInfo = (ColumnInfo) targetmap.get(sourceinfo
+					.getName().toLowerCase());
+			if (columnInfo == null) {
+				result.add("ALTER TABLE " + tableName + " ADD COLUMN "
+						+ sourceinfo.toDDL() + ";");
+			} else if (ableChange(sourceinfo, columnInfo)) {
+				String com = compartor(sourceinfo, columnInfo);
+				if (!com.equals(""))
+					result.add("ALTER TABLE " + tableName + " MODIFY COLUMN "
+							+ com + ";");
+			} else {
+				throw new Exception(tableName + " " + sourceinfo.toString()
+						+ " to " + columnInfo + "列类型不匹配  无法自动变更");
+			}
+		}
+
+		return result;
+	}
+
+	public String compartor(ColumnInfo info, ColumnInfo info2) {
+		if (((info.getType().equals("int"))
+				|| (info.getType().equals("integer")) || (info.getType()
+				.startsWith("int")))
+				&& ((info2.getType().equals("integer"))
+						|| (info2.getType().equals("int")) || (info2.getType()
+						.startsWith("int")))) {
+			return "";
+		}
+
+		if ((info.getType().equals("bigint"))
+				&& (info2.getType().equals(info.getType()))) {
+			return "";
+		}
+		if ((info.getType().equals("text"))
+				&& (info2.getType().equals(info.getType()))) {
+			return "";
+		}
+		if ((info.getType().equals("longtext"))
+				&& (info2.getType().equals(info.getType()))) {
+			return "";
+		}
+		if ((info.getType().equals("bit"))
+				&& (info2.getType().equals(info.getType()))) {
+			return "";
+		}
+		if ((info.getType().equals("tinyint"))
+				&& (info2.getType().equals(info.getType()))) {
+			return "";
+		}
+
+		if ((info.getType().equals(info2.getType()))
+				&& (info.getSize().intValue() <= info2.getSize().intValue())
+				&& (info.getNullable() == info2.getNullable())) {
+			return "";
+		}
+		return info.toDDL();
+	}
+
+	private boolean ableChange(ColumnInfo info, ColumnInfo info2) {
+		List list = (List) this.changeMap.get(info.getType());
+		if (list == null) {
+			return false;
+		}
+
+		if (!list.contains(info2.getType())) {
+			return false;
+		}
+
+		return true;
+	}
+}
+
+/*
+ * Location: C:\Users\ye.yuan\Desktop\common-gamelog2-2.0.5-SNAPSHOT.jar
+ * Qualified Name: com.moloong.game.log.util.TableCompar JD-Core Version: 0.6.2
+ */

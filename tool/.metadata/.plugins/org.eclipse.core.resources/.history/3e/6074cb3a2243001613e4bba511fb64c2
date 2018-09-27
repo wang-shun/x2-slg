@@ -1,0 +1,12 @@
+package com.log.util;
+
+public enum TableType {
+	//天
+	DAY,
+	//月
+	MONTH,
+	//年
+	YEAR,
+	//单个表
+	SINGLE;
+}

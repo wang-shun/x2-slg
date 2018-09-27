@@ -1,0 +1,17 @@
+ package com.log.util;
+ 
+ public enum TableType
+ {
+   DAY, 
+ 
+   MONTH, 
+ 
+   YEAR, 
+ 
+   SINGLE;
+ }
+
+/* Location:           C:\Users\ye.yuan\Desktop\common-gamelog2-2.0.5-SNAPSHOT.jar
+ * Qualified Name:     com.moloong.game.log.util.TableType
+ * JD-Core Version:    0.6.2
+ */

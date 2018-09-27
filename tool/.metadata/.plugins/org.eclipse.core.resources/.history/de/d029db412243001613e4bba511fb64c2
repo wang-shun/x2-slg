@@ -1,0 +1,17 @@
+package com.log.util;
+
+/**
+ * 插入表类型每句
+ * @author ye.yuan
+ *
+ */
+public enum TableType {
+	//天
+	DAY,
+	//月
+	MONTH,
+	//年
+	YEAR,
+	//单个表
+	SINGLE;
+}

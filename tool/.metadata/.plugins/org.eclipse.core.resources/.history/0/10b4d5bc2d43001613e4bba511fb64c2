@@ -1,0 +1,112 @@
+package com.log.template;
+
+import org.apache.log4j.Logger;
+
+import com.log.annotation.Column;
+import com.log.annotation.Template;
+
+@Template(necessaryFields = "accountId,account,createServerId")
+public abstract class PlayerLogTemplate extends BaseLog {
+	Logger logger = Logger.getLogger(PlayerLogTemplate.class);
+	public String roleId;
+	public String roleName;
+	public String accountId;
+	public String account;
+	public Integer createServerId;
+	public Integer currentServerId;
+	public Integer level;
+	public String actionId;
+
+	@Column(fieldType = "varchar(50)", remark = "角色ID")
+	public String getRoleId() {
+		return this.roleId;
+	}
+
+	@Column(fieldType = "varchar(50)", remark = "角色名")
+	public String getRoleName() {
+		return this.roleName;
+	}
+
+	@Column(fieldType = "varchar(50)", remark = "账号ID")
+	public String getAccountId() {
+		return this.accountId;
+	}
+
+	@Column(fieldType = "varchar(50)", remark = "账号名")
+	public String getAccount() {
+		return this.account;
+	}
+
+	@Column(fieldType = "int", remark = "创建服ID")
+	public Integer getCreateServerId() {
+		return this.createServerId;
+	}
+
+	@Column(fieldType = "int", remark = "当前服ID")
+	public Integer getCurrentServerId() {
+		return this.currentServerId;
+	}
+
+	@Column(fieldType = "int", remark = "等级")
+	public Integer getLevel() {
+		return this.level;
+	}
+
+	@Column(fieldType = "varchar(50)", remark = "玩家行为唯一ID")
+	public String getActionId() {
+		return this.actionId;
+	}
+
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public void setCreateServerId(Integer createServerId) {
+		this.createServerId = createServerId;
+	}
+
+	public void setCurrentServerId(Integer currentServerId) {
+		this.currentServerId = currentServerId;
+	}
+
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+
+	public void setActionId(String actionId) {
+		this.actionId = actionId;
+	}
+
+	public void fullByPlayer(IPlayerTemplate player, String actionId) {
+		setAccount(player.getAccount4Log());
+		setAccountId(player.getAccountId4Log());
+		setRoleId(player.getRoleId4Log());
+		setRoleName(player.getRoleName4Log());
+		setCreateServerId(player.getCreateServerId4Log());
+		setCurrentServerId(player.getCurrentServerId4Log());
+		setLevel(player.getLevel4Log());
+		setActionId(actionId);
+	}
+
+	public void logToFile() {
+		this.logger.error("");
+	}
+}
+
+/*
+ * Location: C:\Users\ye.yuan\Desktop\common-gamelog2-2.0.5-SNAPSHOT.jar
+ * Qualified Name: com.moloong.game.log.template.v2.PlayerLogTemplate JD-Core
+ * Version: 0.6.2
+ */

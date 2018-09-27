@@ -1,0 +1,10 @@
+package com.log.util;
+
+public enum TableType {
+	DAY,
+
+	MONTH,
+
+	YEAR,
+
+}

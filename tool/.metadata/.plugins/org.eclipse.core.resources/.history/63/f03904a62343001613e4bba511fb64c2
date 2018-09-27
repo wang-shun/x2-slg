@@ -1,0 +1,149 @@
+/*     */ package com.moloong.game.log.util;
+/*     */ 
+/*     */ import java.io.File;
+/*     */ import java.io.FileFilter;
+/*     */ import java.io.IOException;
+/*     */ import java.net.JarURLConnection;
+/*     */ import java.net.URL;
+/*     */ import java.net.URLDecoder;
+/*     */ import java.util.Enumeration;
+/*     */ import java.util.LinkedHashSet;
+/*     */ import java.util.Set;
+/*     */ import java.util.jar.JarEntry;
+/*     */ import java.util.jar.JarFile;
+/*     */ import org.apache.log4j.Logger;
+/*     */ 
+/*     */ public class ClassUtil
+/*     */ {
+/*  27 */   private static final Logger logger = Logger.getLogger(ClassUtil.class);
+/*     */ 
+/*     */   public static <T> Set<Class<T>> getSubClasses(String packageName, Class<T> parentClass)
+/*     */   {
+/*  50 */     Set classes = new LinkedHashSet();
+/*     */ 
+/*  52 */     boolean recursive = true;
+/*     */ 
+/*  55 */     String packageDirName = packageName.replace('.', '/');
+/*     */     try
+/*     */     {
+/*  59 */       Enumeration dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+/*     */ 
+/*  61 */       while (dirs.hasMoreElements())
+/*     */       {
+/*  63 */         URL url = (URL)dirs.nextElement();
+/*     */ 
+/*  65 */         String protocol = url.getProtocol();
+/*     */ 
+/*  67 */         if ("file".equals(protocol))
+/*     */         {
+/*  69 */           String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
+/*     */ 
+/*  71 */           findAndAddClassesInPackageByFile(packageName, filePath, recursive, classes, parentClass);
+/*  72 */         } else if ("jar".equals(protocol))
+/*     */         {
+/*     */           try
+/*     */           {
+/*  78 */             JarFile jar = ((JarURLConnection)url.openConnection()).getJarFile();
+/*     */ 
+/*  80 */             Enumeration entries = jar.entries();
+/*     */ 
+/*  82 */             while (entries.hasMoreElements())
+/*     */             {
+/*  84 */               JarEntry entry = (JarEntry)entries.nextElement();
+/*  85 */               String name = entry.getName();
+/*     */ 
+/*  87 */               if (name.charAt(0) == '/')
+/*     */               {
+/*  89 */                 name = name.substring(1);
+/*     */               }
+/*  91 */               String packageNameNew = packageName;
+/*     */ 
+/*  93 */               if (name.startsWith(packageDirName)) {
+/*  94 */                 int idx = name.lastIndexOf('/');
+/*     */ 
+/*  96 */                 if (idx != -1)
+/*     */                 {
+/*  98 */                   packageNameNew = name.substring(0, idx).replace('/', '.');
+/*     */                 }
+/*     */ 
+/* 101 */                 if ((idx != -1) || (recursive))
+/*     */                 {
+/* 103 */                   if ((name.endsWith(".class")) && (!entry.isDirectory()))
+/*     */                   {
+/* 105 */                     String className = name.substring(packageNameNew.length() + 1, name.length() - 6);
+/*     */                     try
+/*     */                     {
+/* 109 */                       Class loadClass = Thread.currentThread().getContextClassLoader().loadClass(packageNameNew + '.' + className);
+/* 110 */                       if ((parentClass.isAssignableFrom(loadClass)) && (!parentClass.equals(loadClass)))
+/*     */                       {
+/* 112 */                         Class result = loadClass;
+/* 113 */                         classes.add(result);
+/*     */                       }
+/*     */                     } catch (ClassNotFoundException e) {
+/* 116 */                       logger.error("添加用户自定义视图类错误 找不到此类的.class文件");
+/* 117 */                       e.printStackTrace();
+/*     */                     }
+/*     */                   }
+/*     */                 }
+/*     */               }
+/*     */             }
+/*     */           } catch (IOException e) {
+/* 124 */             logger.error("在扫描用户定义视图时从jar包获取文件出错");
+/* 125 */             e.printStackTrace();
+/*     */           }
+/*     */         }
+/*     */       }
+/*     */     } catch (IOException e) {
+/* 130 */       e.printStackTrace();
+/*     */     }
+/*     */ 
+/* 133 */     return classes;
+/*     */   }
+/*     */ 
+/*     */   public static <T> void findAndAddClassesInPackageByFile(String packageName, String packagePath, boolean recursive, Set<Class<T>> classes, Class<T> parentClass)
+/*     */   {
+/* 148 */     File dir = new File(packagePath);
+/*     */ 
+/* 150 */     if ((!dir.exists()) || (!dir.isDirectory()))
+/*     */     {
+/* 152 */       return;
+/*     */     }
+/*     */ 
+/* 155 */     File[] dirfiles = dir.listFiles(new FileFilter()
+/*     */     {
+/*     */       public boolean accept(File file) {
+/* 158 */         return ((this.val$recursive) && (file.isDirectory())) || (file.getName().endsWith(".class"));
+/*     */       }
+/*     */     });
+/* 163 */     for (File file : dirfiles)
+/*     */     {
+/* 165 */       if (file.isDirectory()) {
+/* 166 */         findAndAddClassesInPackageByFile(packageName + "." + file.getName(), file.getAbsolutePath(), recursive, classes, parentClass);
+/*     */       }
+/*     */       else {
+/* 169 */         String className = file.getName().substring(0, file.getName().length() - 6);
+/*     */         try
+/*     */         {
+/* 175 */           Class loadClass = Thread.currentThread().getContextClassLoader().loadClass(packageName + '.' + className);
+/* 176 */           if ((parentClass.isAssignableFrom(loadClass)) && (!parentClass.equals(loadClass)))
+/*     */           {
+/* 178 */             Class result = loadClass;
+/* 179 */             classes.add(result);
+/*     */           }
+/*     */         }
+/*     */         catch (ClassNotFoundException e)
+/*     */         {
+/* 184 */           e.printStackTrace();
+/*     */         }
+/*     */       }
+/*     */     }
+/*     */   }
+/*     */ 
+/* 190 */   public static void main(String[] args) { getSubClasses("com.mchange", Object.class); }
+/*     */ 
+/*     */ }
+
+/* Location:           C:\Users\ye.yuan\Desktop\common-gamelog2-2.0.5-SNAPSHOT.jar
+ * Qualified Name:     com.moloong.game.log.util.ClassUtil
+ * JD-Core Version:    0.6.2
+ */

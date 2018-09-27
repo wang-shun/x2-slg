@@ -1,0 +1,250 @@
+package com.log.template;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.log.annotation.Template;
+
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.apache.log4j.Logger;
+
+public abstract class BaseLog {
+	private static Logger logger = Logger.getLogger(BaseLog.class);
+
+	private static ConcurrentHashMap<Class<? extends BaseLog>, List<MetaData>> metadataMap = new ConcurrentHashMap();
+
+	private static SimpleDateFormat YYYY_MM_DD_HH_MM_SS = new SimpleDateFormat(
+			"yyyy-MM-dd HH:mm:ss");
+
+	private static SimpleDateFormat YYYY_MM_DD = new SimpleDateFormat(
+			"yyyyMMdd");
+
+	private static SimpleDateFormat YYYY_MM = new SimpleDateFormat("yyyyMM");
+
+	private static SimpleDateFormat YYYY = new SimpleDateFormat("yyyy");
+
+	public long time = System.currentTimeMillis();
+
+	private Set<String> necessaryFields = new HashSet<>();
+
+	private static Set<Class<BaseLog>> newVersionClass = null;
+
+	public BaseLog() {
+		if (!metadataMap.containsKey(getClass())) {
+			Template template = (Template) getClass().getSuperclass()
+					.getAnnotation(Template.class);
+			if (template != null) {
+				String[] nsFields = template.necessaryFields().split(",");
+				for (String string : nsFields) {
+					this.necessaryFields.add(string);
+				}
+				List metadata = new ArrayList();
+
+				if (newVersionClass == null) {
+					newVersionClass = getNewVersionClass();
+				}
+				List fields = null;
+				if (newVersionClass.contains(getClass().getSuperclass()))
+					fields = getAllFields(getClass());
+				else {
+					fields = Arrays.asList(getClass().getSuperclass()
+							.getFields());
+				}
+				for (Field field : fields) {
+					try {
+						PropertyDescriptor pd = new PropertyDescriptor(
+								field.getName(), getClass());
+						Method method = pd.getReadMethod();
+						if (method != null) {
+							Column column = (Column) method
+									.getAnnotation(Column.class);
+							if (column != null) {
+								metadata.add(new MetaData(field.getName(),
+										column.fieldType(), column.remark()));
+							} else {
+								pd = new PropertyDescriptor(field.getName(),
+										getClass().getSuperclass());
+								method = pd.getReadMethod();
+								if (method != null) {
+									column = (Column) method
+											.getAnnotation(Column.class);
+									if (column != null)
+										metadata.add(new MetaData(field
+												.getName(), column.fieldType(),
+												column.remark()));
+								}
+							}
+						}
+					} catch (Exception e) {
+						logger.error(getClass().getName() + ":"
+								+ e.getMessage());
+					}
+				}
+				metadataMap.putIfAbsent(getClass(), metadata);
+			} else {
+				try {
+					throw new Exception("继承关系错误！");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public Set<Class<BaseLog>> getNewVersionClass() {
+		Set newVersionClass = ClassUtil.getSubClasses(
+				"com.moloong.game.log.template.v2", BaseLog.class);
+		return newVersionClass;
+	}
+
+	public List<Field> getAllFields(Class clazz) {
+		List fieldList = new ArrayList();
+		Field[] fields = clazz.getDeclaredFields();
+		for (Field field : fields) {
+			fieldList.add(field);
+		}
+		fields = clazz.getSuperclass().getFields();
+		for (Field field : fields) {
+			fieldList.add(field);
+		}
+		return fieldList;
+	}
+
+	public String buildInsertSql() throws Exception {
+		String tableName = buildTableName(this.time);
+		String fields = "(";
+		String values = "(";
+
+		HashMap param = getParam();
+		for (String key : param.keySet()) {
+			fields = fields + key + ",";
+			values = values + dealValue(param.get(key)) + ",";
+		}
+		if (fields.length() > 1) {
+			fields = fields.substring(0, fields.length() - 1);
+		}
+		if (values.length() > 1) {
+			values = values.substring(0, values.length() - 1);
+		}
+		fields = fields + ")";
+		values = values + ")";
+
+		StringBuffer buffer = new StringBuffer("insert into `" + tableName
+				+ "` ").append(fields).append("values").append(values);
+		String returnString = buffer.toString();
+		return returnString;
+	}
+
+	public String dealValue(Object object) {
+		if (object == null) {
+			return "null";
+		}
+		if ((object instanceof Date)) {
+			return "'" + YYYY_MM_DD_HH_MM_SS.format(object) + "'";
+		}
+		if (((object instanceof Integer)) || ((object instanceof String))
+				|| ((object instanceof Long)) || ((object instanceof Short))
+				|| ((object instanceof Byte))) {
+			return "'" + object.toString() + "'";
+		}
+		String result = null;
+		try {
+			result = JSON.toJSONString(object, new SerializerFeature[] {
+					SerializerFeature.WriteClassName,
+					SerializerFeature.DisableCircularReferenceDetect });
+		} catch (Exception e) {
+			logger.error(getClass().getName() + "json序列化错误：" + object);
+		}
+		return "'" + result + "'";
+	}
+
+	public HashMap<String, Object> getParam() throws Exception {
+		HashMap param = new HashMap();
+
+		if (newVersionClass == null) {
+			newVersionClass = getNewVersionClass();
+		}
+		List fields = null;
+		if (newVersionClass.contains(getClass().getSuperclass()))
+			fields = getAllFields(getClass());
+		else {
+			fields = Arrays.asList(getClass().getSuperclass().getFields());
+		}
+		for (Field field : fields) {
+			PropertyDescriptor pd = new PropertyDescriptor(field.getName(),
+					getClass());
+			Method method = pd.getReadMethod();
+			if (method != null) {
+				Object value = method.invoke(this, new Object[0]);
+				param.put(field.getName(), value);
+				if ((this.necessaryFields.contains(field.getName()))
+						&& ((value == null) || (value.equals("")))) {
+					throw new Exception(getClass().getName() + "字段  "
+							+ field.getName() + " 不能为空");
+				}
+			}
+		}
+		return param;
+	}
+
+	public String buildCreateTableSql(long time) {
+		StringBuffer DDL = new StringBuffer();
+		DDL.append("CREATE TABLE IF NOT EXISTS `").append(buildTableName(time))
+				.append("` (\n`id` int(11) NOT NULL AUTO_INCREMENT,\n");
+		for (MetaData metaData : (List) metadataMap.get(getClass())) {
+			DDL.append(metaData).append(",\n");
+		}
+		DDL.append("PRIMARY KEY (`id`)) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8");
+		return DDL.toString();
+	}
+
+	public String buildTableName(long time)
+   {
+     String tablename = getTableName();
+     switch (1.$SwitchMap$com$moloong$game$log$util$TableType[getTableType().ordinal()]) {
+     case 1:
+       tablename = tablename + YYYY_MM_DD.format(new Date(time));
+       break;
+     case 2:
+       tablename = tablename + YYYY_MM.format(new Date(time));
+       break;
+     case 3:
+       tablename = tablename + YYYY.format(new Date(time));
+       break;
+     case 4:
+     }
+     return tablename;
+   }
+
+	public String getTableName() {
+		return getClass().getSimpleName();
+	}
+
+	public abstract TableType getTableType();
+
+	public abstract void logToFile();
+
+	public List<MetaData> getMetadata() {
+		return (List) metadataMap.get(getClass());
+	}
+
+	@Column(fieldType = "bigint", remark = "时间戳")
+	public Long getTime() {
+		return Long.valueOf(this.time);
+	}
+
+	public void setTime(Long time) {
+		this.time = time.longValue();
+	}
+}

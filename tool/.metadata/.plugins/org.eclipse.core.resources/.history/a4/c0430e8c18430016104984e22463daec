@@ -1,0 +1,5 @@
+package com.log.template;
+
+public class BaseLog {
+
+}

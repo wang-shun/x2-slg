@@ -1,0 +1,9 @@
+package com.log.util;
+/**
+ *	@author ye.yuan
+ *	@date 2016-7-06  10:24:03
+ *	@version 1.0
+ */
+public class MetaData {
+
+}

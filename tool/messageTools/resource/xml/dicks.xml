@@ -1,0 +1,40 @@
+<protocols package="com.xgame.logic.server.country" id="400">
+  <message id="200" handlerEnum="CS" sync="false"  className="ReqCreateBuild" queue="s2s" commandEnum="PLAYERMSG"  explain="创建建筑物">
+      <field type="int" name="uid" explain="唯一id"/>
+      <field type="int" name="sid" explain="配置id"/>
+      <field type="int" name="x" explain="x"/>
+      <field type="int" name="y" explain="y"/>
+      <field type="int" name="createType" explain="是否立即创建"/>
+      <field type="int" name="templateId" explain="阵型id"/>
+  </message>
+  
+  <message id="201" handlerEnum="CS" sync="false"  className="ReqMoveBuild" queue="s2s" commandEnum="PLAYERMSG" explain="建筑物移动">
+      <field type="int" name="uid" explain="唯一id"/>
+      <field type="int" name="x" explain="x"/>
+      <field type="int" name="y" explain="y"/>
+      <field type="int" name="templateId" explain="阵型id"/>
+      <field type="int" name="sid" explain="配置id"/>
+  </message>
+  
+  <message id="202" handlerEnum="CS" sync="false"  className="ReqCountryHandle" queue="s2s" commandEnum="PLAYERMSG" explain="建筑物移动">
+      <field type="int" name="templateId" explain="唯一id"/>
+      <field type="String" name="opName" explain="EDIT  CANCEL  SAVE  DELETE ALLDELETE"/>
+      <field type="int" name="uid" explain=""/>
+  </message>
+  
+  <message id="203" handlerEnum="CS" sync="false"  className="ReqRemoveObstruct" queue="s2s" commandEnum="PLAYERMSG" explain="移除建筑物">
+      <field type="int" name="uid" explain="唯一id"/>
+      <field type="int" name="sid" explain=""/>
+  </message>
+  
+  <message id="204" handlerEnum="CS" sync="false"  className="ReqLevelUpBuild" queue="s2s" commandEnum="PLAYERMSG" explain="移除建筑物">
+      <field type="int" name="uid" explain="唯一id"/>
+      <field type="int" name="sid" explain=""/>
+      <field type="int" name="createType" explain="是否立即创建"/>
+  </message>
+  
+  <message id="205" handlerEnum="CS" sync="false"  className="ReqBuildingCollect" queue="s2s" commandEnum="PLAYERMSG" explain="移除建筑物">
+      <field type="int" name="uid" explain="唯一id"/>
+      <field type="int" name="sid" explain=""/>
+  </message>
+</protocols>
