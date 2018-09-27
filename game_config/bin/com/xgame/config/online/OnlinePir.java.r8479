@@ -1,0 +1,49 @@
+package com.xgame.config.online;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-17 11:30:56 
+ */
+public class OnlinePir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**基地等级区间*/
+	Object limit;
+	/**奖励（itemsId_数量_权重）*/
+	Object rewards;
+	/**倒计时*/
+	int times;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**基地等级区间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getLimit(){
+		return (T)limit;
+	}
+	/**奖励（itemsId_数量_权重）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards(){
+		return (T)rewards;
+	}
+	/**倒计时*/
+	public int getTimes(){
+		return times;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

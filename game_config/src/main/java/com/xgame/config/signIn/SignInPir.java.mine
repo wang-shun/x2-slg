@@ -1,0 +1,69 @@
+package com.xgame.config.signIn;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-21 14:46:01 
+ */
+public class SignInPir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**调用设置（1开服仅用一轮2后期循环）*/
+	int install;
+	/**可签到次数*/
+	int times;
+	/**奖励（主基地1-7级，id_数量_VIPn双倍，0则不存在双倍）*/
+	Object rewards1;
+	/**奖励（主基地8-15级，id_数量_VIPn双倍，0则不存在双倍）*/
+	Object rewards2;
+	/**奖励（主基地16-23级，id_数量_VIPn双倍，0则不存在双倍）*/
+	Object rewards3;
+	/**奖励（主基地24-30级，id_数量_VIPn双倍，0则不存在双倍）*/
+	Object rewards4;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**调用设置（1开服仅用一轮2后期循环）*/
+	public int getInstall(){
+		return install;
+	}
+	/**可签到次数*/
+	public int getTimes(){
+		return times;
+	}
+	/**奖励（主基地1-7级，id_数量_VIPn双倍，0则不存在双倍）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards1(){
+		return (T)rewards1;
+	}
+	/**奖励（主基地8-15级，id_数量_VIPn双倍，0则不存在双倍）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards2(){
+		return (T)rewards2;
+	}
+	/**奖励（主基地16-23级，id_数量_VIPn双倍，0则不存在双倍）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards3(){
+		return (T)rewards3;
+	}
+	/**奖励（主基地24-30级，id_数量_VIPn双倍，0则不存在双倍）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards4(){
+		return (T)rewards4;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

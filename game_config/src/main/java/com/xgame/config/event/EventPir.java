@@ -1,0 +1,89 @@
+package com.xgame.config.event;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-05-12 09:54:20 
+ */
+public class EventPir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**名称*/
+	int name;
+	/**类型（与eventTask呼应）*/
+	int type;
+	/**事件类型（1军团2个人3荣耀）*/
+	int evenType;
+	/**事件持续时间（单位秒）*/
+	int time;
+	/**积分一档初始分数*/
+	int initScore;
+	/**积分二档倍数(最终结算结果取整)*/
+	double trim2;
+	/**积分三档倍数(最终结算结果取整)*/
+	double trim3;
+	/**青铜宝箱*/
+	int rewards1;
+	/**白银宝箱*/
+	int rewards2;
+	/**黄金宝箱*/
+	int rewards3;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**名称*/
+	public int getName(){
+		return name;
+	}
+	/**类型（与eventTask呼应）*/
+	public int getType(){
+		return type;
+	}
+	/**事件类型（1军团2个人3荣耀）*/
+	public int getEvenType(){
+		return evenType;
+	}
+	/**事件持续时间（单位秒）*/
+	public int getTime(){
+		return time;
+	}
+	/**积分一档初始分数*/
+	public int getInitScore(){
+		return initScore;
+	}
+	/**积分二档倍数(最终结算结果取整)*/
+	public double getTrim2(){
+		return trim2;
+	}
+	/**积分三档倍数(最终结算结果取整)*/
+	public double getTrim3(){
+		return trim3;
+	}
+	/**青铜宝箱*/
+	public int getRewards1(){
+		return rewards1;
+	}
+	/**白银宝箱*/
+	public int getRewards2(){
+		return rewards2;
+	}
+	/**黄金宝箱*/
+	public int getRewards3(){
+		return rewards3;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

@@ -1,0 +1,97 @@
+package com.xgame.config.ziYuanDian;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-21 14:46:01 
+ */
+public class ZiYuanDianPir extends BaseFilePri{
+	
+	/**﻿资源点ID*/
+	int ID;
+	/**资源类型（1石油 2稀土 3钢材 4 黄金 5 钻石 ）*/
+	int type;
+	/**资源名*/
+	int name;
+	/**资源等级*/
+	int Lv;
+	/**资源建筑形象*/
+	Object showId;
+	/**资源图标*/
+	Object icon;
+	/**资源上限*/
+	int MAX;
+	/**采空刷新时间（分钟）*/
+	double CD1;
+	/**不满消失时间（分钟）*/
+	double CD2;
+	/**携带系数(不再使用)（资源的重量读global id=500602,500603,500604,500605,500606）*/
+	double value1;
+	/**采集速度系数（秒）*/
+	double value2;
+	/**游戏帮助ID*/
+	int help;
+	
+	
+	
+	/**﻿资源点ID*/
+	public int getID(){
+		return ID;
+	}
+	/**资源类型（1石油 2稀土 3钢材 4 黄金 5 钻石 ）*/
+	public int getType(){
+		return type;
+	}
+	/**资源名*/
+	public int getName(){
+		return name;
+	}
+	/**资源等级*/
+	public int getLv(){
+		return Lv;
+	}
+	/**资源建筑形象*/
+	@SuppressWarnings("unchecked")
+	public <T> T getShowId(){
+		return (T)showId;
+	}
+	/**资源图标*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIcon(){
+		return (T)icon;
+	}
+	/**资源上限*/
+	public int getMAX(){
+		return MAX;
+	}
+	/**采空刷新时间（分钟）*/
+	public double getCD1(){
+		return CD1;
+	}
+	/**不满消失时间（分钟）*/
+	public double getCD2(){
+		return CD2;
+	}
+	/**携带系数(不再使用)（资源的重量读global id=500602,500603,500604,500605,500606）*/
+	public double getValue1(){
+		return value1;
+	}
+	/**采集速度系数（秒）*/
+	public double getValue2(){
+		return value2;
+	}
+	/**游戏帮助ID*/
+	public int getHelp(){
+		return help;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

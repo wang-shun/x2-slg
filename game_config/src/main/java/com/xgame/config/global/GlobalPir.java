@@ -1,0 +1,43 @@
+package com.xgame.config.global;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-05-12 09:54:21 
+ */
+public class GlobalPir extends BaseFilePri{
+	
+	/**﻿a配置类型*/
+	int type;
+	/**配置值*/
+	Object value;
+	/**描述*/
+	Object desc;
+	
+	
+	
+	/**﻿a配置类型*/
+	public int getType(){
+		return type;
+	}
+	/**配置值*/
+	@SuppressWarnings("unchecked")
+	public <T> T getValue(){
+		return (T)value;
+	}
+	/**描述*/
+	@SuppressWarnings("unchecked")
+	public <T> T getDesc(){
+		return (T)desc;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

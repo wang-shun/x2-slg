@@ -1,0 +1,280 @@
+package com.xgame.config.building;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-05-12 09:54:17 
+ */
+public class BuildingPir extends BaseFilePri{
+	
+	/**﻿建筑id*/
+	int id;
+	/**名字（填id）*/
+	int name;
+	/**建筑类型（5围墙,7障碍物不能变，主要做AI找目标权重值）(0行政大楼，1军事建筑，2资源建筑，3地雷，4空中炸弹，5围墙，6防御塔,7障碍物，8其他)*/
+	int type;
+	/**技能id(可填入多个技能id，使用；分隔)*/
+	Object skill_id;
+	/**AI类型（空表示没有AI）*/
+	int ai;
+	/**建筑功能描述（填id）*/
+	int description;
+	/**再生时间(秒)(只有障碍物才使用改字段)*/
+	int CD;
+	/**是否可被爆破（0不可以，1可以）*/
+	int blasting;
+	/**最高等级*/
+	int max_lv;
+	/**最多建筑个数*/
+	int max_num;
+	/**每级主基地对应可以建筑的最大数量*/
+	Object main_num;
+	/**升级建筑要求前置建筑物id（0表示不需要前置条件，有多个前置条件用逗号分隔，每个等级的条件用分号分隔）*/
+	Object require_id;
+	/**建筑物图标*/
+	Object icon;
+	/**建筑物模型id*/
+	Object model;
+	/**站地格子数*/
+	int size;
+	/**客户端排序用*/
+	int index;
+	/**升级消耗黄金*/
+	Object cost_cash;
+	/**升级消耗稀土*/
+	Object cost_earth;
+	/**升级消耗钢材*/
+	Object cost_steel;
+	/**升级消耗石油*/
+	Object cost_oil;
+	/**升级需要时间（单位秒）*/
+	Object cost_time;
+	/**升级消耗道具(等级，道具ID，数量)*/
+	Object cost_item;
+	/**清理消耗资源(只有障碍物才使用改字段)1石油，2稀土，3钢材，4黄金（填写格式3,100;4,100消耗资源类型,资源数量）*/
+	Object cost_type;
+	/**清理需要时间（单位秒）(只有障碍物才使用改字段)*/
+	int cost_time1;
+	/**V1*/
+	Object v1;
+	/**V2*/
+	Object v2;
+	/**建造/升级奖励战斗力*/
+	Object strength;
+	/**奖励道具（道具ID,数量）*/
+	Object exp;
+	/**清理奖励(只有障碍物才使用改字段)(有多个道具用分号分隔)*/
+	Object clearance;
+	/**属性*/
+	Object attr;
+	/**建筑功能1,信息;2,升级;3,增益;4,状态;5,生产;6,科技升级;7,装甲蓝图;8,制造;9,储物箱;10,驻军;11,生化配件;12,复活;13,商店;14,敌情;15,关押;16,贸易;17,驻军装甲;18,修理;19,改造;20,驻防;21,传送;22,容量(pending);23,开采;24,提速;25,采钢;26,采金;27,采油;28,采土;29,旋转;30,整列;31,重新布置;32,清理;*/
+	Object function;
+	/**基地摧毁参数*/
+	double para;
+	/**音效*/
+	Object sound;
+	/**建造标签（1功能2防御3资源）*/
+	int tab;
+	/**1,血量;2,援建次数;3,全体攻击;4,造兵加速;5,科研加速;6,造兵数量;7,容量;8,总修理容量;9,战力（不再使用）;10,负载;11,税率;12,植入体生产加速;13,出征部队数量;14,关押数量;15,关押数量;16,收治伤病数量;17,雷达效果;18,奖励战力;19,防守部队数量;20,警戒范围;21,矿车数量;22,临时存储容量;23,黄金/h;24,钢材/h;25,石油/h;26,稀土/h;27,仓库容量;28，驻军容量*/
+	Object info;
+	/**建筑选中类型（1不可移动非战斗建筑,2可移动非战斗建筑,3可移动战斗建筑）*/
+	int type2;
+	/**用于技能区分受体特效/音效材质分类（1 土木 2 混凝土 3 玻璃 4 钢材 5 血肉。。。随意加 ）*/
+	int material;
+	/**死亡音效(;随机)*/
+	Object deathSound;
+	/**死亡特效(;随机)*/
+	Object deathEffect;
+	
+	
+	
+	/**﻿建筑id*/
+	public int getId(){
+		return id;
+	}
+	/**名字（填id）*/
+	public int getName(){
+		return name;
+	}
+	/**建筑类型（5围墙,7障碍物不能变，主要做AI找目标权重值）(0行政大楼，1军事建筑，2资源建筑，3地雷，4空中炸弹，5围墙，6防御塔,7障碍物，8其他)*/
+	public int getType(){
+		return type;
+	}
+	/**技能id(可填入多个技能id，使用；分隔)*/
+	@SuppressWarnings("unchecked")
+	public <T> T getSkill_id(){
+		return (T)skill_id;
+	}
+	/**AI类型（空表示没有AI）*/
+	public int getAi(){
+		return ai;
+	}
+	/**建筑功能描述（填id）*/
+	public int getDescription(){
+		return description;
+	}
+	/**再生时间(秒)(只有障碍物才使用改字段)*/
+	public int getCD(){
+		return CD;
+	}
+	/**是否可被爆破（0不可以，1可以）*/
+	public int getBlasting(){
+		return blasting;
+	}
+	/**最高等级*/
+	public int getMax_lv(){
+		return max_lv;
+	}
+	/**最多建筑个数*/
+	public int getMax_num(){
+		return max_num;
+	}
+	/**每级主基地对应可以建筑的最大数量*/
+	@SuppressWarnings("unchecked")
+	public <T> T getMain_num(){
+		return (T)main_num;
+	}
+	/**升级建筑要求前置建筑物id（0表示不需要前置条件，有多个前置条件用逗号分隔，每个等级的条件用分号分隔）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRequire_id(){
+		return (T)require_id;
+	}
+	/**建筑物图标*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIcon(){
+		return (T)icon;
+	}
+	/**建筑物模型id*/
+	@SuppressWarnings("unchecked")
+	public <T> T getModel(){
+		return (T)model;
+	}
+	/**站地格子数*/
+	public int getSize(){
+		return size;
+	}
+	/**客户端排序用*/
+	public int getIndex(){
+		return index;
+	}
+	/**升级消耗黄金*/
+	@SuppressWarnings("unchecked")
+	public <T> T getCost_cash(){
+		return (T)cost_cash;
+	}
+	/**升级消耗稀土*/
+	@SuppressWarnings("unchecked")
+	public <T> T getCost_earth(){
+		return (T)cost_earth;
+	}
+	/**升级消耗钢材*/
+	@SuppressWarnings("unchecked")
+	public <T> T getCost_steel(){
+		return (T)cost_steel;
+	}
+	/**升级消耗石油*/
+	@SuppressWarnings("unchecked")
+	public <T> T getCost_oil(){
+		return (T)cost_oil;
+	}
+	/**升级需要时间（单位秒）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getCost_time(){
+		return (T)cost_time;
+	}
+	/**升级消耗道具(等级，道具ID，数量)*/
+	@SuppressWarnings("unchecked")
+	public <T> T getCost_item(){
+		return (T)cost_item;
+	}
+	/**清理消耗资源(只有障碍物才使用改字段)1石油，2稀土，3钢材，4黄金（填写格式3,100;4,100消耗资源类型,资源数量）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getCost_type(){
+		return (T)cost_type;
+	}
+	/**清理需要时间（单位秒）(只有障碍物才使用改字段)*/
+	public int getCost_time1(){
+		return cost_time1;
+	}
+	/**V1*/
+	@SuppressWarnings("unchecked")
+	public <T> T getV1(){
+		return (T)v1;
+	}
+	/**V2*/
+	@SuppressWarnings("unchecked")
+	public <T> T getV2(){
+		return (T)v2;
+	}
+	/**建造/升级奖励战斗力*/
+	@SuppressWarnings("unchecked")
+	public <T> T getStrength(){
+		return (T)strength;
+	}
+	/**奖励道具（道具ID,数量）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getExp(){
+		return (T)exp;
+	}
+	/**清理奖励(只有障碍物才使用改字段)(有多个道具用分号分隔)*/
+	@SuppressWarnings("unchecked")
+	public <T> T getClearance(){
+		return (T)clearance;
+	}
+	/**属性*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttr(){
+		return (T)attr;
+	}
+	/**建筑功能1,信息;2,升级;3,增益;4,状态;5,生产;6,科技升级;7,装甲蓝图;8,制造;9,储物箱;10,驻军;11,生化配件;12,复活;13,商店;14,敌情;15,关押;16,贸易;17,驻军装甲;18,修理;19,改造;20,驻防;21,传送;22,容量(pending);23,开采;24,提速;25,采钢;26,采金;27,采油;28,采土;29,旋转;30,整列;31,重新布置;32,清理;*/
+	@SuppressWarnings("unchecked")
+	public <T> T getFunction(){
+		return (T)function;
+	}
+	/**基地摧毁参数*/
+	public double getPara(){
+		return para;
+	}
+	/**音效*/
+	@SuppressWarnings("unchecked")
+	public <T> T getSound(){
+		return (T)sound;
+	}
+	/**建造标签（1功能2防御3资源）*/
+	public int getTab(){
+		return tab;
+	}
+	/**1,血量;2,援建次数;3,全体攻击;4,造兵加速;5,科研加速;6,造兵数量;7,容量;8,总修理容量;9,战力（不再使用）;10,负载;11,税率;12,植入体生产加速;13,出征部队数量;14,关押数量;15,关押数量;16,收治伤病数量;17,雷达效果;18,奖励战力;19,防守部队数量;20,警戒范围;21,矿车数量;22,临时存储容量;23,黄金/h;24,钢材/h;25,石油/h;26,稀土/h;27,仓库容量;28，驻军容量*/
+	@SuppressWarnings("unchecked")
+	public <T> T getInfo(){
+		return (T)info;
+	}
+	/**建筑选中类型（1不可移动非战斗建筑,2可移动非战斗建筑,3可移动战斗建筑）*/
+	public int getType2(){
+		return type2;
+	}
+	/**用于技能区分受体特效/音效材质分类（1 土木 2 混凝土 3 玻璃 4 钢材 5 血肉。。。随意加 ）*/
+	public int getMaterial(){
+		return material;
+	}
+	/**死亡音效(;随机)*/
+	@SuppressWarnings("unchecked")
+	public <T> T getDeathSound(){
+		return (T)deathSound;
+	}
+	/**死亡特效(;随机)*/
+	@SuppressWarnings("unchecked")
+	public <T> T getDeathEffect(){
+		return (T)deathEffect;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

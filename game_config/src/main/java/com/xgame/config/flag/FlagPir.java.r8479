@@ -1,0 +1,48 @@
+package com.xgame.config.flag;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-17 11:30:55 
+ */
+public class FlagPir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int ID;
+	/**1:军团 2：小队*/
+	int type_1;
+	/**1:底层,1:中间层,3:上层*/
+	int type_2;
+	/**图标（路径：\client\Assets\GameAssets\ArtResources\Icon\Common）*/
+	Object icon;
+	
+	
+	
+	/**﻿ID*/
+	public int getID(){
+		return ID;
+	}
+	/**1:军团 2：小队*/
+	public int getType_1(){
+		return type_1;
+	}
+	/**1:底层,1:中间层,3:上层*/
+	public int getType_2(){
+		return type_2;
+	}
+	/**图标（路径：\client\Assets\GameAssets\ArtResources\Icon\Common）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIcon(){
+		return (T)icon;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

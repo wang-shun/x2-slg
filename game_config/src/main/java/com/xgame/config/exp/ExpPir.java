@@ -1,0 +1,59 @@
+package com.xgame.config.exp;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-05-12 09:54:21 
+ */
+public class ExpPir extends BaseFilePri{
+	
+	/**﻿指挥官等级 lv=1(表示1级升2级所需要的经验)*/
+	int lv;
+	/**升级需要经验*/
+	long exp;
+	/**获得天赋点数*/
+	int talent_point;
+	/**最大体力数*/
+	int power_max;
+	/**吃卡体力上限*/
+	int power_max_card;
+	/**增加战力值*/
+	int gs_bonus;
+	
+	
+	
+	/**﻿指挥官等级 lv=1(表示1级升2级所需要的经验)*/
+	public int getLv(){
+		return lv;
+	}
+	/**升级需要经验*/
+	public long getExp(){
+		return exp;
+	}
+	/**获得天赋点数*/
+	public int getTalent_point(){
+		return talent_point;
+	}
+	/**最大体力数*/
+	public int getPower_max(){
+		return power_max;
+	}
+	/**吃卡体力上限*/
+	public int getPower_max_card(){
+		return power_max_card;
+	}
+	/**增加战力值*/
+	public int getGs_bonus(){
+		return gs_bonus;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

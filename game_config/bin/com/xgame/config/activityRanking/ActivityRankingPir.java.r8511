@@ -1,0 +1,43 @@
+package com.xgame.config.activityRanking;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-22 21:10:41 
+ */
+public class ActivityRankingPir extends BaseFilePri{
+	
+	/**﻿id*/
+	int id;
+	/**个人排行榜奖励*/
+	Object rewards1;
+	/**军团排行榜奖励*/
+	Object rewards2;
+	
+	
+	
+	/**﻿id*/
+	public int getId(){
+		return id;
+	}
+	/**个人排行榜奖励*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards1(){
+		return (T)rewards1;
+	}
+	/**军团排行榜奖励*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards2(){
+		return (T)rewards2;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

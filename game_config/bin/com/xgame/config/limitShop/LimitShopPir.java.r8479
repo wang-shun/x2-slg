@@ -1,0 +1,66 @@
+package com.xgame.config.limitShop;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-17 11:30:56 
+ */
+public class LimitShopPir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**活动商店ID*/
+	int activityType;
+	/**购买次数*/
+	int sellNum;
+	/**道具ID*/
+	Object itemsId;
+	/**原价格（道具在商城中的价格，若不填不在商城中显示）*/
+	int price;
+	/**特价*/
+	int specialPrice;
+	/**次数重置（1每日重置2活动开启重置）*/
+	int refreshType;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**活动商店ID*/
+	public int getActivityType(){
+		return activityType;
+	}
+	/**购买次数*/
+	public int getSellNum(){
+		return sellNum;
+	}
+	/**道具ID*/
+	@SuppressWarnings("unchecked")
+	public <T> T getItemsId(){
+		return (T)itemsId;
+	}
+	/**原价格（道具在商城中的价格，若不填不在商城中显示）*/
+	public int getPrice(){
+		return price;
+	}
+	/**特价*/
+	public int getSpecialPrice(){
+		return specialPrice;
+	}
+	/**次数重置（1每日重置2活动开启重置）*/
+	public int getRefreshType(){
+		return refreshType;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

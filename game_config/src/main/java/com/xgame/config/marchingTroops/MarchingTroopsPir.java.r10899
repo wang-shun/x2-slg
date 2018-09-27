@@ -1,0 +1,54 @@
+package com.xgame.config.marchingTroops;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-05-11 18:12:51 
+ */
+public class MarchingTroopsPir extends BaseFilePri{
+	
+	/**﻿统帅等级*/
+	int lv;
+	/**部队出征人数*/
+	Object num;
+	/**成功概率(客户端显示)*/
+	double chance_0;
+	/**成功概率(实际概率)*/
+	double chance_1;
+	/***/
+	int gs_bonus;
+	
+	
+	
+	/**﻿统帅等级*/
+	public int getLv(){
+		return lv;
+	}
+	/**部队出征人数*/
+	@SuppressWarnings("unchecked")
+	public <T> T getNum(){
+		return (T)num;
+	}
+	/**成功概率(客户端显示)*/
+	public double getChance_0(){
+		return chance_0;
+	}
+	/**成功概率(实际概率)*/
+	public double getChance_1(){
+		return chance_1;
+	}
+	/***/
+	public int getGs_bonus(){
+		return gs_bonus;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

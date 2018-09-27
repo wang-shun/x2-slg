@@ -1,0 +1,131 @@
+package com.xgame.config.task;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-05-06 15:20:02 
+ */
+public class TaskPir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**名称*/
+	int name;
+	/**描述*/
+	int features;
+	/**分页（1：军队生产，2：基础建设，3：作战方针，4：科技研究，5：主要成就，6：成就徽章[不在基地任务显示]）*/
+	int tab;
+	/**任务类型（1:点击建筑收获，2:指定资源产量达到，3:生产某类士兵，4:生产某级别士兵，5:生产指定士兵，6:修理伤兵，7:装备生产，8:装备合成，9:拥有装备，10:材料生产，11:材料合成，12:解锁科研，13:科研升级，14:指定科技到指定等级，15:科研提升战力，16:建筑升级，17:指定建筑到指定等级，18:建造提升战力，19:使用某类型道具，20:使用指定道具，21:在线时间，22:占领领土，23:野外采集次数，24:野外采集，25:攻击玩家掠夺，26:野外战斗，27:消灭恐怖分子，28:进攻玩家基地胜利，29:侦查玩家，30:攻击玩家，31:损坏敌方部队，32:摧毁敌方部队，33:摧毁他服敌方部队，34:攻占他服行政中心，35:通关副本，36:个人事件，37:获取活跃宝箱，38:时间类任务，39:完成所有类型任务，40:指挥官等级，41:战争模拟器，42:捐献，43:军团援建，44:发布军团招募，45:集结进攻\防御，46:成为执政官，47:刷新军团商店，48:军团商店兑换，49:叛军攻打/击杀，50:头目入侵积分，51:军团捐献数值）*/
+	int type;
+	/**v1*/
+	Object v1;
+	/**v2*/
+	Object v2;
+	/**任务奖励（5位：装备，6位,道具，7位：配件）*/
+	Object rewards;
+	/**奖励战斗力*/
+	int strength;
+	/**前置任务*/
+	int requireTask;
+	/**初始化(0初始化时清空进度;1初始化当前进度)*/
+	int initState;
+	/**时间队列判断*/
+	int timeList;
+	/**奖励判断*/
+	int rewards1;
+	/**推荐顺序*/
+	int order;
+	/**图标（图集Atlas_Icon）*/
+	Object icon;
+	/**是否可前往*/
+	Object index;
+	/**跳转对象*/
+	Object goto1;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**名称*/
+	public int getName(){
+		return name;
+	}
+	/**描述*/
+	public int getFeatures(){
+		return features;
+	}
+	/**分页（1：军队生产，2：基础建设，3：作战方针，4：科技研究，5：主要成就，6：成就徽章[不在基地任务显示]）*/
+	public int getTab(){
+		return tab;
+	}
+	/**任务类型（1:点击建筑收获，2:指定资源产量达到，3:生产某类士兵，4:生产某级别士兵，5:生产指定士兵，6:修理伤兵，7:装备生产，8:装备合成，9:拥有装备，10:材料生产，11:材料合成，12:解锁科研，13:科研升级，14:指定科技到指定等级，15:科研提升战力，16:建筑升级，17:指定建筑到指定等级，18:建造提升战力，19:使用某类型道具，20:使用指定道具，21:在线时间，22:占领领土，23:野外采集次数，24:野外采集，25:攻击玩家掠夺，26:野外战斗，27:消灭恐怖分子，28:进攻玩家基地胜利，29:侦查玩家，30:攻击玩家，31:损坏敌方部队，32:摧毁敌方部队，33:摧毁他服敌方部队，34:攻占他服行政中心，35:通关副本，36:个人事件，37:获取活跃宝箱，38:时间类任务，39:完成所有类型任务，40:指挥官等级，41:战争模拟器，42:捐献，43:军团援建，44:发布军团招募，45:集结进攻\防御，46:成为执政官，47:刷新军团商店，48:军团商店兑换，49:叛军攻打/击杀，50:头目入侵积分，51:军团捐献数值）*/
+	public int getType(){
+		return type;
+	}
+	/**v1*/
+	@SuppressWarnings("unchecked")
+	public <T> T getV1(){
+		return (T)v1;
+	}
+	/**v2*/
+	@SuppressWarnings("unchecked")
+	public <T> T getV2(){
+		return (T)v2;
+	}
+	/**任务奖励（5位：装备，6位,道具，7位：配件）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards(){
+		return (T)rewards;
+	}
+	/**奖励战斗力*/
+	public int getStrength(){
+		return strength;
+	}
+	/**前置任务*/
+	public int getRequireTask(){
+		return requireTask;
+	}
+	/**初始化(0初始化时清空进度;1初始化当前进度)*/
+	public int getInitState(){
+		return initState;
+	}
+	/**时间队列判断*/
+	public int getTimeList(){
+		return timeList;
+	}
+	/**奖励判断*/
+	public int getRewards1(){
+		return rewards1;
+	}
+	/**推荐顺序*/
+	public int getOrder(){
+		return order;
+	}
+	/**图标（图集Atlas_Icon）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIcon(){
+		return (T)icon;
+	}
+	/**是否可前往*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIndex(){
+		return (T)index;
+	}
+	/**跳转对象*/
+	@SuppressWarnings("unchecked")
+	public <T> T getGoto1(){
+		return (T)goto1;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

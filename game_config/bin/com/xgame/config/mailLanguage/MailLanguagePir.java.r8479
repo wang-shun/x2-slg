@@ -1,0 +1,47 @@
+package com.xgame.config.mailLanguage;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-17 11:30:56 
+ */
+public class MailLanguagePir extends BaseFilePri{
+	
+	/**﻿标题id*/
+	int sampleId;
+	/**标题id*/
+	int titleId;
+	/**内容id*/
+	int contentId;
+	/**附件id*/
+	int adjunctId;
+	
+	
+	
+	/**﻿标题id*/
+	public int getSampleId(){
+		return sampleId;
+	}
+	/**标题id*/
+	public int getTitleId(){
+		return titleId;
+	}
+	/**内容id*/
+	public int getContentId(){
+		return contentId;
+	}
+	/**附件id*/
+	public int getAdjunctId(){
+		return adjunctId;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

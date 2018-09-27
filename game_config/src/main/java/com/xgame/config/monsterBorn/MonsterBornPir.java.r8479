@@ -1,0 +1,90 @@
+package com.xgame.config.monsterBorn;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-17 11:30:56 
+ */
+public class MonsterBornPir extends BaseFilePri{
+	
+	/**﻿id*/
+	int id;
+	/**开服时间（天数）*/
+	int serverTime;
+	/**怪物组id（见copyMonster表）*/
+	Object groupId;
+	/**怪物出生点数量参数（填入64表示：每6464的区域内随机出一个怪物出生点）*/
+	int monsterPoint;
+	/**怪物波数*/
+	int monsterWave;
+	/**每波怪物出生间隔时间（秒）*/
+	int time;
+	/**每一次攻击玩家的怪物部队数量（从groupId从随机出不同的怪物）*/
+	int monsterTroops;
+	/**每一只部队的怪物数量*/
+	int monsterNum;
+	/**怪物数值修正参数*/
+	double monsterTrim;
+	/**消灭一个怪个人获得的分数*/
+	int score1;
+	/**消灭一个怪军团获得的分数*/
+	int score2;
+	
+	
+	
+	/**﻿id*/
+	public int getId(){
+		return id;
+	}
+	/**开服时间（天数）*/
+	public int getServerTime(){
+		return serverTime;
+	}
+	/**怪物组id（见copyMonster表）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getGroupId(){
+		return (T)groupId;
+	}
+	/**怪物出生点数量参数（填入64表示：每6464的区域内随机出一个怪物出生点）*/
+	public int getMonsterPoint(){
+		return monsterPoint;
+	}
+	/**怪物波数*/
+	public int getMonsterWave(){
+		return monsterWave;
+	}
+	/**每波怪物出生间隔时间（秒）*/
+	public int getTime(){
+		return time;
+	}
+	/**每一次攻击玩家的怪物部队数量（从groupId从随机出不同的怪物）*/
+	public int getMonsterTroops(){
+		return monsterTroops;
+	}
+	/**每一只部队的怪物数量*/
+	public int getMonsterNum(){
+		return monsterNum;
+	}
+	/**怪物数值修正参数*/
+	public double getMonsterTrim(){
+		return monsterTrim;
+	}
+	/**消灭一个怪个人获得的分数*/
+	public int getScore1(){
+		return score1;
+	}
+	/**消灭一个怪军团获得的分数*/
+	public int getScore2(){
+		return score2;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

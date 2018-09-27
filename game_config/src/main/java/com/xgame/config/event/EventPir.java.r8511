@@ -1,0 +1,93 @@
+package com.xgame.config.event;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-22 21:10:46 
+ */
+public class EventPir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**名称*/
+	int name;
+	/**类型（与其他表格呼应）*/
+	int type;
+	/**事件（1军团2个人3荣耀）*/
+	int event;
+	/**主基地等级区间*/
+	Object limit;
+	/**青铜积分*/
+	int score1;
+	/**白银积分*/
+	int score2;
+	/**黄金积分*/
+	int score3;
+	/**青铜宝箱*/
+	Object rewards1;
+	/**白银宝箱*/
+	Object rewards2;
+	/**黄金宝箱*/
+	Object rewards3;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**名称*/
+	public int getName(){
+		return name;
+	}
+	/**类型（与其他表格呼应）*/
+	public int getType(){
+		return type;
+	}
+	/**事件（1军团2个人3荣耀）*/
+	public int getEvent(){
+		return event;
+	}
+	/**主基地等级区间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getLimit(){
+		return (T)limit;
+	}
+	/**青铜积分*/
+	public int getScore1(){
+		return score1;
+	}
+	/**白银积分*/
+	public int getScore2(){
+		return score2;
+	}
+	/**黄金积分*/
+	public int getScore3(){
+		return score3;
+	}
+	/**青铜宝箱*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards1(){
+		return (T)rewards1;
+	}
+	/**白银宝箱*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards2(){
+		return (T)rewards2;
+	}
+	/**黄金宝箱*/
+	@SuppressWarnings("unchecked")
+	public <T> T getRewards3(){
+		return (T)rewards3;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

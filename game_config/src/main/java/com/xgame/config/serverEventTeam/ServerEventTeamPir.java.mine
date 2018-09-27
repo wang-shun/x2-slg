@@ -1,0 +1,174 @@
+package com.xgame.config.serverEventTeam;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-21 14:46:01 
+ */
+public class ServerEventTeamPir extends BaseFilePri{
+	
+	/**﻿主键*/
+	int id;
+	/**事件组id*/
+	int eventTeamId;
+	/**事件（1军团2个人3荣耀）*/
+	int event;
+	/**周一，类型（对应event表id）*/
+	int type1;
+	/**开始时间*/
+	Object openTime1;
+	/**持续时间（秒）*/
+	int times1;
+	/**周二，类型（对应event表id）*/
+	int type2;
+	/**开始时间*/
+	Object openTime2;
+	/**持续时间（秒）*/
+	int times2;
+	/**周三，类型（对应event表id）*/
+	int type3;
+	/**开始时间*/
+	Object openTime3;
+	/**持续时间（秒）*/
+	int times3;
+	/**周四，类型（对应event表id）*/
+	int type4;
+	/**开始时间*/
+	Object openTime4;
+	/**持续时间（秒）*/
+	int times4;
+	/**周五，类型（对应event表id）*/
+	int type5;
+	/**开始时间*/
+	Object openTime5;
+	/**持续时间（秒）*/
+	int times5;
+	/**周六，类型（对应event表id）*/
+	int type6;
+	/**开始时间*/
+	Object openTime6;
+	/**持续时间（秒）*/
+	int times6;
+	/**周日，类型（对应event表id）*/
+	int type7;
+	/**开始时间*/
+	Object openTime7;
+	/**持续时间（秒）*/
+	int times7;
+	
+	
+	
+	/**﻿主键*/
+	public int getId(){
+		return id;
+	}
+	/**事件组id*/
+	public int getEventTeamId(){
+		return eventTeamId;
+	}
+	/**事件（1军团2个人3荣耀）*/
+	public int getEvent(){
+		return event;
+	}
+	/**周一，类型（对应event表id）*/
+	public int getType1(){
+		return type1;
+	}
+	/**开始时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getOpenTime1(){
+		return (T)openTime1;
+	}
+	/**持续时间（秒）*/
+	public int getTimes1(){
+		return times1;
+	}
+	/**周二，类型（对应event表id）*/
+	public int getType2(){
+		return type2;
+	}
+	/**开始时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getOpenTime2(){
+		return (T)openTime2;
+	}
+	/**持续时间（秒）*/
+	public int getTimes2(){
+		return times2;
+	}
+	/**周三，类型（对应event表id）*/
+	public int getType3(){
+		return type3;
+	}
+	/**开始时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getOpenTime3(){
+		return (T)openTime3;
+	}
+	/**持续时间（秒）*/
+	public int getTimes3(){
+		return times3;
+	}
+	/**周四，类型（对应event表id）*/
+	public int getType4(){
+		return type4;
+	}
+	/**开始时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getOpenTime4(){
+		return (T)openTime4;
+	}
+	/**持续时间（秒）*/
+	public int getTimes4(){
+		return times4;
+	}
+	/**周五，类型（对应event表id）*/
+	public int getType5(){
+		return type5;
+	}
+	/**开始时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getOpenTime5(){
+		return (T)openTime5;
+	}
+	/**持续时间（秒）*/
+	public int getTimes5(){
+		return times5;
+	}
+	/**周六，类型（对应event表id）*/
+	public int getType6(){
+		return type6;
+	}
+	/**开始时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getOpenTime6(){
+		return (T)openTime6;
+	}
+	/**持续时间（秒）*/
+	public int getTimes6(){
+		return times6;
+	}
+	/**周日，类型（对应event表id）*/
+	public int getType7(){
+		return type7;
+	}
+	/**开始时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getOpenTime7(){
+		return (T)openTime7;
+	}
+	/**持续时间（秒）*/
+	public int getTimes7(){
+		return times7;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

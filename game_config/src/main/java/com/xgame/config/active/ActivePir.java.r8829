@@ -1,0 +1,107 @@
+package com.xgame.config.active;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-24 10:54:54 
+ */
+public class ActivePir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**名称*/
+	int name;
+	/**描述*/
+	int features;
+	/**说明*/
+	int description;
+	/**类型如下（1:点击建筑收获，2:指定资源产量达到，3:生产某类士兵，4:生产指定士兵，5:修理伤兵，6:装备生产，7:装备合成，8:拥有装备，9:材料生产，10:材料合成，11:解锁科研，12:科研升级，13:指定科技到指定等级，14:建筑升级，15:指定建筑到指定等级，16:使用某类型道具，17:使用指定道具，18:在线时间，19:占领领土，20:野外采集次数，21:野外采集，22:攻击玩家掠夺，23:野外战斗，24:消灭野外怪物，25:进攻玩家基地胜利，26:侦查玩家，27:攻击玩家，28:击败敌方部队，29:击败他服敌方部队，30:攻占他服行政中心，31:通关副本，32:个人事件，33:获取活跃宝箱，34:时间类任务，35:完成所有类型任务，36:指挥官等级，37:捐献，38:军团援建，39:发布军团招募，40:集结进攻\防御，41:成为执政官，42:刷新军团商店，43:军团商店兑换）*/
+	int type;
+	/**v1*/
+	Object v1;
+	/**v2（数量）*/
+	Object v2;
+	/**是否可前往*/
+	int index;
+	/**切换任务等级（行政大楼）*/
+	Object limit;
+	/**解锁条件*/
+	Object unlock;
+	/**单次奖励活跃度*/
+	int singleRewards;
+	/**任务图标*/
+	Object icon;
+	/**跳转对象*/
+	Object goto1;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**名称*/
+	public int getName(){
+		return name;
+	}
+	/**描述*/
+	public int getFeatures(){
+		return features;
+	}
+	/**说明*/
+	public int getDescription(){
+		return description;
+	}
+	/**类型如下（1:点击建筑收获，2:指定资源产量达到，3:生产某类士兵，4:生产指定士兵，5:修理伤兵，6:装备生产，7:装备合成，8:拥有装备，9:材料生产，10:材料合成，11:解锁科研，12:科研升级，13:指定科技到指定等级，14:建筑升级，15:指定建筑到指定等级，16:使用某类型道具，17:使用指定道具，18:在线时间，19:占领领土，20:野外采集次数，21:野外采集，22:攻击玩家掠夺，23:野外战斗，24:消灭野外怪物，25:进攻玩家基地胜利，26:侦查玩家，27:攻击玩家，28:击败敌方部队，29:击败他服敌方部队，30:攻占他服行政中心，31:通关副本，32:个人事件，33:获取活跃宝箱，34:时间类任务，35:完成所有类型任务，36:指挥官等级，37:捐献，38:军团援建，39:发布军团招募，40:集结进攻\防御，41:成为执政官，42:刷新军团商店，43:军团商店兑换）*/
+	public int getType(){
+		return type;
+	}
+	/**v1*/
+	@SuppressWarnings("unchecked")
+	public <T> T getV1(){
+		return (T)v1;
+	}
+	/**v2（数量）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getV2(){
+		return (T)v2;
+	}
+	/**是否可前往*/
+	public int getIndex(){
+		return index;
+	}
+	/**切换任务等级（行政大楼）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getLimit(){
+		return (T)limit;
+	}
+	/**解锁条件*/
+	@SuppressWarnings("unchecked")
+	public <T> T getUnlock(){
+		return (T)unlock;
+	}
+	/**单次奖励活跃度*/
+	public int getSingleRewards(){
+		return singleRewards;
+	}
+	/**任务图标*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIcon(){
+		return (T)icon;
+	}
+	/**跳转对象*/
+	@SuppressWarnings("unchecked")
+	public <T> T getGoto1(){
+		return (T)goto1;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

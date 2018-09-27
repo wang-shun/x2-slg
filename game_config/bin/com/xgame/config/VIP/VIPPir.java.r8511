@@ -1,0 +1,288 @@
+package com.xgame.config.VIP;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-22 21:10:49 
+ */
+public class VIPPir extends BaseFilePri{
+	
+	/**﻿id*/
+	int id;
+	/**vip等级icon*/
+	Object icon;
+	/**当前VIP所需充值钻石*/
+	Object point;
+	/**双倍援建军团贡献*/
+	Object doubleCoin;
+	/**可以进行礼物赠送*/
+	Object isGift;
+	/**占领领土后自动返回*/
+	Object autoReturn;
+	/**立即收取联盟任务*/
+	Object autoArmyTask;
+	/**立即收取日常任务*/
+	Object autoDailyTask;
+	/**聊天中显示VIP图标*/
+	Object VipIcon;
+	/**免费模拟器冷却时间*/
+	Object freeSimCD;
+	/**模拟器免费次数*/
+	Object freeSimTimes;
+	/**语音转化文字/天*/
+	Object vocie;
+	/**常规补给冷却时间*/
+	Object onlineGiftCD;
+	/**材料生产加速(分钟)*/
+	Object factorySpeedUp;
+	/**军团捐献次数*/
+	Object armyDonate;
+	/**军团任务个数*/
+	Object armyMission;
+	/**日常任务个数*/
+	Object dailyMission;
+	/**占领领土速度*/
+	Object territorySpeedUp;
+	/**“立即完成”加速(分钟)*/
+	Object complete;
+	/**购买体力次数（每次可购买体力的点数读global表510000，购买的价格读costDiamond表）*/
+	Object buyEnergy;
+	/**全体生命*/
+	Object attrShow1;
+	/**全体防御*/
+	Object attrShow2;
+	/**全体攻击*/
+	Object attrShow3;
+	/**行军队列*/
+	Object attrShow4;
+	/**钢材采集速度*/
+	Object attrShow5;
+	/**石油采集速度*/
+	Object attrShow6;
+	/**稀土采集速度*/
+	Object attrShow7;
+	/**黄金采集速度*/
+	Object attrShow8;
+	/**部队负重提高*/
+	Object attrShow9;
+	/**粮食消耗速度*/
+	Object attrShow10;
+	/**士兵训练速度*/
+	Object attrShow11;
+	/**行军速度*/
+	Object attrShow12;
+	/**打怪行军速度提升*/
+	Object attrShow13;
+	/**每小时钢铁产量*/
+	Object attrShow14;
+	/**每小时石油产量*/
+	Object attrShow15;
+	/**每小时稀土产量*/
+	Object attrShow16;
+	/**每小时黄金产量*/
+	Object attrShow17;
+	/***/
+	Object attr;
+	
+	
+	
+	/**﻿id*/
+	public int getId(){
+		return id;
+	}
+	/**vip等级icon*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIcon(){
+		return (T)icon;
+	}
+	/**当前VIP所需充值钻石*/
+	@SuppressWarnings("unchecked")
+	public <T> T getPoint(){
+		return (T)point;
+	}
+	/**双倍援建军团贡献*/
+	@SuppressWarnings("unchecked")
+	public <T> T getDoubleCoin(){
+		return (T)doubleCoin;
+	}
+	/**可以进行礼物赠送*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIsGift(){
+		return (T)isGift;
+	}
+	/**占领领土后自动返回*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAutoReturn(){
+		return (T)autoReturn;
+	}
+	/**立即收取联盟任务*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAutoArmyTask(){
+		return (T)autoArmyTask;
+	}
+	/**立即收取日常任务*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAutoDailyTask(){
+		return (T)autoDailyTask;
+	}
+	/**聊天中显示VIP图标*/
+	@SuppressWarnings("unchecked")
+	public <T> T getVipIcon(){
+		return (T)VipIcon;
+	}
+	/**免费模拟器冷却时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getFreeSimCD(){
+		return (T)freeSimCD;
+	}
+	/**模拟器免费次数*/
+	@SuppressWarnings("unchecked")
+	public <T> T getFreeSimTimes(){
+		return (T)freeSimTimes;
+	}
+	/**语音转化文字/天*/
+	@SuppressWarnings("unchecked")
+	public <T> T getVocie(){
+		return (T)vocie;
+	}
+	/**常规补给冷却时间*/
+	@SuppressWarnings("unchecked")
+	public <T> T getOnlineGiftCD(){
+		return (T)onlineGiftCD;
+	}
+	/**材料生产加速(分钟)*/
+	@SuppressWarnings("unchecked")
+	public <T> T getFactorySpeedUp(){
+		return (T)factorySpeedUp;
+	}
+	/**军团捐献次数*/
+	@SuppressWarnings("unchecked")
+	public <T> T getArmyDonate(){
+		return (T)armyDonate;
+	}
+	/**军团任务个数*/
+	@SuppressWarnings("unchecked")
+	public <T> T getArmyMission(){
+		return (T)armyMission;
+	}
+	/**日常任务个数*/
+	@SuppressWarnings("unchecked")
+	public <T> T getDailyMission(){
+		return (T)dailyMission;
+	}
+	/**占领领土速度*/
+	@SuppressWarnings("unchecked")
+	public <T> T getTerritorySpeedUp(){
+		return (T)territorySpeedUp;
+	}
+	/**“立即完成”加速(分钟)*/
+	@SuppressWarnings("unchecked")
+	public <T> T getComplete(){
+		return (T)complete;
+	}
+	/**购买体力次数（每次可购买体力的点数读global表510000，购买的价格读costDiamond表）*/
+	@SuppressWarnings("unchecked")
+	public <T> T getBuyEnergy(){
+		return (T)buyEnergy;
+	}
+	/**全体生命*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow1(){
+		return (T)attrShow1;
+	}
+	/**全体防御*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow2(){
+		return (T)attrShow2;
+	}
+	/**全体攻击*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow3(){
+		return (T)attrShow3;
+	}
+	/**行军队列*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow4(){
+		return (T)attrShow4;
+	}
+	/**钢材采集速度*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow5(){
+		return (T)attrShow5;
+	}
+	/**石油采集速度*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow6(){
+		return (T)attrShow6;
+	}
+	/**稀土采集速度*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow7(){
+		return (T)attrShow7;
+	}
+	/**黄金采集速度*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow8(){
+		return (T)attrShow8;
+	}
+	/**部队负重提高*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow9(){
+		return (T)attrShow9;
+	}
+	/**粮食消耗速度*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow10(){
+		return (T)attrShow10;
+	}
+	/**士兵训练速度*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow11(){
+		return (T)attrShow11;
+	}
+	/**行军速度*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow12(){
+		return (T)attrShow12;
+	}
+	/**打怪行军速度提升*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow13(){
+		return (T)attrShow13;
+	}
+	/**每小时钢铁产量*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow14(){
+		return (T)attrShow14;
+	}
+	/**每小时石油产量*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow15(){
+		return (T)attrShow15;
+	}
+	/**每小时稀土产量*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow16(){
+		return (T)attrShow16;
+	}
+	/**每小时黄金产量*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttrShow17(){
+		return (T)attrShow17;
+	}
+	/***/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttr(){
+		return (T)attr;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

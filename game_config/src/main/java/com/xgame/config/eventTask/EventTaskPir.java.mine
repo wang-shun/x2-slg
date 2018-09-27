@@ -1,0 +1,67 @@
+package com.xgame.config.eventTask;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-04-10 20:14:12 
+ */
+public class EventTaskPir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**名称*/
+	int name;
+	/**类型（与task表相同）*/
+	int type;
+	/**数值1*/
+	Object v1;
+	/**数值2*/
+	Object v2;
+	/**主事件类型（对应event表type）*/
+	int eventType;
+	/**奖励积分*/
+	int score;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**名称*/
+	public int getName(){
+		return name;
+	}
+	/**类型（与task表相同）*/
+	public int getType(){
+		return type;
+	}
+	/**数值1*/
+	@SuppressWarnings("unchecked")
+	public <T> T getV1(){
+		return (T)v1;
+	}
+	/**数值2*/
+	@SuppressWarnings("unchecked")
+	public <T> T getV2(){
+		return (T)v2;
+	}
+	/**主事件类型（对应event表type）*/
+	public int getEventType(){
+		return eventType;
+	}
+	/**奖励积分*/
+	public int getScore(){
+		return score;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

@@ -1,0 +1,49 @@
+package com.xgame.config.copyMonster;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-05-06 15:32:20 
+ */
+public class CopyMonsterPir extends BaseFilePri{
+	
+	/**﻿怪物id*/
+	int id;
+	/**怪物组id*/
+	int groupId;
+	/**配件参数*/
+	Object peijianIds;
+	/**属性(解析规则同配件表attr字段)(122属性不能被放大！！！)*/
+	Object attr;
+	
+	
+	
+	/**﻿怪物id*/
+	public int getId(){
+		return id;
+	}
+	/**怪物组id*/
+	public int getGroupId(){
+		return groupId;
+	}
+	/**配件参数*/
+	@SuppressWarnings("unchecked")
+	public <T> T getPeijianIds(){
+		return (T)peijianIds;
+	}
+	/**属性(解析规则同配件表attr字段)(122属性不能被放大！！！)*/
+	@SuppressWarnings("unchecked")
+	public <T> T getAttr(){
+		return (T)attr;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

@@ -1,0 +1,71 @@
+package com.xgame.config.commanderInfo;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-04-10 20:14:12 
+ */
+public class CommanderInfoPir extends BaseFilePri{
+	
+	/**﻿id*/
+	int id;
+	/**名字id*/
+	int  name_id;
+	/**统计类型（1：战斗力，2：战斗状态，3资源相关，4：战斗增益，5：经济增益）*/
+	int type;
+	/**对应属性id（填入0表示需要特殊处理）*/
+	int library_id;
+	/**属性对象 （见systemEnum表）*/
+	int library_obj;
+	/**他人是否可见*/
+	int is_public;
+	/**客户端排序（从小到大）*/
+	int index;
+	/**客户端显示(0表示数值，1表示百分比,保留小数点后面2位)*/
+	int show_type;
+	
+	
+	
+	/**﻿id*/
+	public int getId(){
+		return id;
+	}
+	/**名字id*/
+	public int  getName_id(){
+		return name_id;
+	}
+	/**统计类型（1：战斗力，2：战斗状态，3资源相关，4：战斗增益，5：经济增益）*/
+	public int getType(){
+		return type;
+	}
+	/**对应属性id（填入0表示需要特殊处理）*/
+	public int getLibrary_id(){
+		return library_id;
+	}
+	/**属性对象 （见systemEnum表）*/
+	public int getLibrary_obj(){
+		return library_obj;
+	}
+	/**他人是否可见*/
+	public int getIs_public(){
+		return is_public;
+	}
+	/**客户端排序（从小到大）*/
+	public int getIndex(){
+		return index;
+	}
+	/**客户端显示(0表示数值，1表示百分比,保留小数点后面2位)*/
+	public int getShow_type(){
+		return show_type;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

@@ -1,0 +1,53 @@
+package com.xgame.config.armyActive;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-04-10 20:14:09 
+ */
+public class ArmyActivePir extends BaseFilePri{
+	
+	/**﻿等级*/
+	int lv;
+	/**升级所需活跃值*/
+	int needExp;
+	/**资源分享比例*/
+	double share;
+	/**首次捐献科技经验倍数*/
+	int Science;
+	/**24点扣除活跃值*/
+	int active;
+	
+	
+	
+	/**﻿等级*/
+	public int getLv(){
+		return lv;
+	}
+	/**升级所需活跃值*/
+	public int getNeedExp(){
+		return needExp;
+	}
+	/**资源分享比例*/
+	public double getShare(){
+		return share;
+	}
+	/**首次捐献科技经验倍数*/
+	public int getScience(){
+		return Science;
+	}
+	/**24点扣除活跃值*/
+	public int getActive(){
+		return active;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

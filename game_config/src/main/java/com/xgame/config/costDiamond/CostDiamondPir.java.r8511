@@ -1,0 +1,41 @@
+package com.xgame.config.costDiamond;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-03-22 21:10:46 
+ */
+public class CostDiamondPir extends BaseFilePri{
+	
+	/**﻿ID*/
+	int id;
+	/**工业工厂槽位解锁消耗钻*/
+	int value_1;
+	/**体力购买价格*/
+	int value_2;
+	
+	
+	
+	/**﻿ID*/
+	public int getId(){
+		return id;
+	}
+	/**工业工厂槽位解锁消耗钻*/
+	public int getValue_1(){
+		return value_1;
+	}
+	/**体力购买价格*/
+	public int getValue_2(){
+		return value_2;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}

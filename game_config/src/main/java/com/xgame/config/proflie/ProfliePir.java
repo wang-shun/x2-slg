@@ -1,0 +1,66 @@
+package com.xgame.config.proflie;
+import com.xgame.config.BaseFilePri;
+import com.alibaba.fastjson.JSON;
+
+/** 
+ * @author configTool
+ * 
+ * @version 1.0.0
+ * @date 2017-05-12 09:54:21 
+ */
+public class ProfliePir extends BaseFilePri{
+	
+	/**﻿Id*/
+	int id;
+	/**类型(1:头像，2：挂件)*/
+	int type1;
+	/**子类型(1:普通，2：vip专用，3特殊)*/
+	int type2;
+	/**解锁条件（type2=1填解锁需要的指挥官等级，type2=2这里填解锁需要的vip等级，type2=3这里填解锁需要的道具的itemid，）*/
+	int unlock;
+	/**解锁条件说明id*/
+	int unlockStrId;
+	/**图标名字*/
+	Object icon;
+	/**客户端排序(从小到大)*/
+	int index;
+	
+	
+	
+	/**﻿Id*/
+	public int getId(){
+		return id;
+	}
+	/**类型(1:头像，2：挂件)*/
+	public int getType1(){
+		return type1;
+	}
+	/**子类型(1:普通，2：vip专用，3特殊)*/
+	public int getType2(){
+		return type2;
+	}
+	/**解锁条件（type2=1填解锁需要的指挥官等级，type2=2这里填解锁需要的vip等级，type2=3这里填解锁需要的道具的itemid，）*/
+	public int getUnlock(){
+		return unlock;
+	}
+	/**解锁条件说明id*/
+	public int getUnlockStrId(){
+		return unlockStrId;
+	}
+	/**图标名字*/
+	@SuppressWarnings("unchecked")
+	public <T> T getIcon(){
+		return (T)icon;
+	}
+	/**客户端排序(从小到大)*/
+	public int getIndex(){
+		return index;
+	}
+	
+	
+	
+	@Override
+	public String toString(){
+		return JSON.toJSONString(this);
+	}
+}
