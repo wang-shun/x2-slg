@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/commons/commons-cli-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="lib/commons/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/http/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/http/httpclient-cache-4.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/http/httpclient-win-4.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/http/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="lib/http/httpcore-4.4.5.jar"/>
+	<classpathentry kind="lib" path="lib/http/httpcore-ab-4.4.5.jar"/>
+	<classpathentry kind="lib" path="lib/http/httpcore-nio-4.4.5.jar"/>
+	<classpathentry kind="lib" path="lib/http/httpmime-4.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/jna/jna-4.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jna/jna-platform-4.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/log/jcl-over-slf4j-1.7.21.jar"/>
+	<classpathentry kind="lib" path="lib/log/jul-to-slf4j-1.7.21.jar"/>
+	<classpathentry kind="lib" path="lib/log/log4j-over-slf4j-1.7.21.jar"/>
+	<classpathentry kind="lib" path="lib/log/logback-classic-1.1.7.jar"/>
+	<classpathentry kind="lib" path="lib/log/logback-core-1.1.7.jar"/>
+	<classpathentry kind="lib" path="lib/log/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="lib/netty/netty-all-4.0.34.Final.jar" sourcepath="lib.src/netty-all-4.0.34.Final-sources.jar"/>
+	<classpathentry kind="lib" path="lib/protostuff/protostuff-api-1.4.4.jar" sourcepath="lib.src/protostuff-api-1.4.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/protostuff/protostuff-collectionschema-1.4.4.jar" sourcepath="lib.src/protostuff-collectionschema-1.4.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/protostuff/protostuff-core-1.4.4.jar" sourcepath="lib.src/protostuff-core-1.4.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/protostuff/protostuff-runtime-1.4.4.jar" sourcepath="lib.src/protostuff-runtime-1.4.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-aop-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-aspects-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-beans-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-context-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-context-support-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-core-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-expression-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-jdbc-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring/spring-test-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/util/c3p0-0.9.1-pre6.jar"/>
+	<classpathentry kind="lib" path="lib/util/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="lib/util/fluent-hc-4.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/util/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="lib/util/guice-4.0-beta4.jar"/>
+	<classpathentry kind="lib" path="lib/util/javassist.jar"/>
+	<classpathentry kind="lib" path="lib/util/javax.inject.jar"/>
+	<classpathentry kind="lib" path="lib/util/jsr305-3.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/util/lombok.jar"/>
+	<classpathentry kind="lib" path="lib/util/mysql-connector-java-5.0.7-bin.jar"/>
+	<classpathentry kind="lib" path="lib/util/protobuf-java-2.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/util/reflections-0.9.10.jar"/>
+	<classpathentry kind="lib" path="lib/util/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/util/quartz-2.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/commons/commons-pool2-2.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/concurrentlinkedhashmap-lru-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/poi/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/poi/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/poi/log4j-1.2.13.jar"/>
+	<classpathentry kind="lib" path="lib/poi/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/poi/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/db/jedis-2.7.3.jar"/>
+	<classpathentry kind="lib" path="E:/slgWork/server/game_common/lib/util/fastjson-1.2.5.jar"/>
+	<classpathentry kind="lib" path="E:/slgWork/server/game_common/lib/poi/poi-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="E:/slgWork/server/game_common/lib/poi/poi-examples-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="E:/slgWork/server/game_common/lib/poi/poi-excelant-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="E:/slgWork/server/game_common/lib/poi/poi-ooxml-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="E:/slgWork/server/game_common/lib/poi/poi-ooxml-schemas-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="E:/slgWork/server/game_common/lib/poi/poi-scratchpad-3.8-20120326.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,38 @@
+<protocols package="com.xgame.utils" id="117">
+  
+   <message id="100" handlerEnum="SC" sync="false"  className="ResSingleMsgSprite"  queue="s2s" commandEnum="PLAYERMSG"  explain="">
+      <field type="SingleMsgSpritePro" name="singleSpritePro" explain=""/>
+  </message>
+  
+   <pro className="SingleMsgSpritePro"  explain="">
+      <field type="long" name="spriteId" explain=""/>
+      <field type="int" name="type" explain=""/>
+      <field type="String" name="name" explain=""/>
+      <field type="int" name="level" explain=""/>
+	  <field type="String" name="sovereign" explain=""/>
+	  <field type="String" name="union" explain=""/>
+	  <list type="MsgSpriteAward" name="awardList" explain=""/>
+	  <field type="PositionPro" name="worldLocation" explain=""/>
+	  <field type="MsgSpriteAttachmentInfo" name="attachmentInfo" explain=""/>
+	  <field type="int" name="state" explain=""/>
+	  <field type="int" name="showType" explain=""/>
+  </pro>
+  
+   <pro className="MsgSpriteAward"  explain="">
+      <field type="int" name="itemId" explain=""/>
+      <field type="int" name="num" explain=""/>
+  </pro>
+  
+  <pro className="PositionPro"  explain="">
+      <field type="float" name="x" explain=""/>
+      <field type="float" name="y" explain=""/>
+  </pro>
+  
+  <pro className="MsgSpriteAttachmentInfo"  explain="">
+      <field type="int" name="type" explain=""/>
+      <field type="int" name="relationship" explain=""/>
+  </pro>
+  
+  
+
+</protocols>
