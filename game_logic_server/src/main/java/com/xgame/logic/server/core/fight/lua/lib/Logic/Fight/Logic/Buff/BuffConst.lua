@@ -1,0 +1,8 @@
+BuffConst = {
+	BIT_BUFF_START = 1,
+	BIT_BUFF_ACTIVE = 2,
+	BIT_BUFF_DESTROY = 3,
+
+	BIT_BUFF_YOUER = 4,---诱饵弹
+	BIT_BUFF_LANJIE = 5,--拦截弹
+};

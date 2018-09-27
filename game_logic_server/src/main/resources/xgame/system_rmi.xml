@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans   xmlns="http://www.springframework.org/schema/beans" 
+  	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  	     xmlns:aop="http://www.springframework.org/schema/aop" 
+  	     xsi:schemaLocation=" 
+  	     http://www.springframework.org/schema/beans 
+  	     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+  	     http://www.springframework.org/schema/aop 
+  	     http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+  	     
+    
+     <bean id="systemRmiService" class="com.xgame.logic.server.game.cross.rmi.SystemRmiServiceImpl" />
+  	         
+     <bean id="systemRmiServiceClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean" abstract="true">
+        <property name="serviceInterface" value="com.xgame.logic.server.game.cross.rmi.SystemRmiService"/>
+        <property name="refreshStubOnConnectFailure" value="true" />
+        <property name="lookupStubOnStartup" value="false" />
+    </bean>
+    
+    <!--客户端--> 
+    <bean id="systemRmiClient" parent="systemRmiServiceClient"> 
+        <property name="serviceUrl" value="rmi://192.168.100.20:11099/SystemRmiService"/> 
+    </bean>
+
+</beans>

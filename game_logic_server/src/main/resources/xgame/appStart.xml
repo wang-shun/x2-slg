@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans   xmlns="http://www.springframework.org/schema/beans" 
+  	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  	     xmlns:aop="http://www.springframework.org/schema/aop" 
+  	     xsi:schemaLocation=" 
+  	     http://www.springframework.org/schema/beans 
+  	     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+  	     http://www.springframework.org/schema/aop 
+  	     http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+  	     
+	 <!-- dbcahe配置 -->
+	<bean id="dbCacheFactoryBean" class="com.xgame.logic.server.core.db.cache.factory.DbCacheFactoryBean">
+		<!-- dump线程池核心线程大小 -->
+		<property name="dumpCoreThreadSize" value="6"/>
+		<!-- 实体缓存大小 -->
+		<property name="entityCacheSize" value="600000"/>
+		<!-- 查询缓存大小 -->
+		<property name="queryCacheSize" value="600000"/>
+		
+		<!-- 每隔这么多毫秒就dump一次 -->
+		<property name="dumpIntervals" value="60000"/>
+	</bean>
+
+	<!-- 定时器-->
+	<bean id="schedulerFactoryBean" class="com.xgame.logic.server.core.utils.scheduler.SchedulerFactoryBean">
+		<!-- 活动间隔毫秒数(每次活动将重新检查到期元素) -->
+		<property name = "liveIntervals" value="60000"/>
+		<!--核心线程大小 -->
+		<property name = "coreThreadSize" value="5"/>
+	</bean>
+	
+    <bean id="remoteService" class="com.xgame.logic.server.game.cross.rmi.RemoteServiceImpl" />
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <!-- does not necessarily have to be the same name as the bean to be exported -->
+        <property name="serviceName" value="remoteService"/>
+        <property name="service" ref="remoteService"/>
+        <property name="serviceInterface" value="com.xgame.logic.server.game.cross.rmi.RemoteService"/>
+        <property name="registryPort" value="1099"/>
+    </bean>
+    
+     <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+     <!-- does not necessarily have to be the same name as the bean to be exported -->
+        <property name="serviceName" value="systemRmiService"/>
+        <property name="service" ref="systemRmiService"/>
+        <property name="serviceInterface" value="com.xgame.logic.server.game.cross.rmi.SystemRmiService"/>
+        <property name="registryPort" value="11099"/>
+     </bean>
+     
+     <bean id="adminService" class="com.xgame.logic.server.game.admin.rmi.AdminRmiServiceImpl" />
+     <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+     <!-- does not necessarily have to be the same name as the bean to be exported -->
+        <property name="serviceName" value="AdminService"/>
+        <property name="service" ref="adminService"/>
+        <property name="serviceInterface" value="com.xgame.logic.server.game.admin.rmi.AdminRmiService"/>
+        <property name="registryPort" value="11098"/>
+     </bean>
+    
+	<import resource="classpath:xgame/cross_rmi.xml" />
+</beans>

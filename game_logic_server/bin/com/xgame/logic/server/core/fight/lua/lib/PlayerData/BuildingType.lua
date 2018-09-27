@@ -1,0 +1,41 @@
+local this = BuildingType;
+
+BuildingType =
+{
+        B_XingZhengDaLou = 1100,--行政大楼
+        B_ShiYanShi = 1101,--实验室 工业工厂
+        B_KeXueYuan = 1102,--科学院
+        B_ShenWuShiYanShi = 1103,--生物实验室
+        B_WaiShiLianLuoChu = 1104,--外事联络处
+        B_JingXiuXueXiao = 1105,--进修学校
+        B_YuanGuMuDi = 1106,--远古墓地
+        B_HeiShi = 1107,--黑市
+        B_DianCiLeiDa = 1108,--电磁雷达
+        B_JianYu = 1109,--监狱
+        B_MaoYiZhan = 1110,--贸易站
+        B_JunYing = 1200,--军营
+        B_ZhiShengJi = 1201,--直升机工厂
+        B_TanKe = 1202,--坦克工厂
+        B_ZhanChe = 1203,--步战车工厂
+        B_XiuLiChang = 1204,--修理厂
+        B_FangShouZhuFang = 1300,--防守驻防
+        B_JianJiPaoTa = 1301,--歼击炮塔
+        B_JingFangPaoTa = 1302,--近防炮塔
+        B_FangKongPaoTa = 1303,--防空弹塔
+        B_HuoYanPao = 1304,--火焰炮
+        B_DianCiTa = 1305,--电磁塔
+        B_FaDianChang = 1306,--发电厂
+        B_YinHang = 1401,--银行
+        B_XiTuCangKu = 1402,--稀土仓库
+        B_ShiYouCangKu = 1403,--石油仓库
+        B_GangCaiCangKu = 1404,--钢材仓库
+        B_Prospect = 1405,--勘探开发院
+        B_MiningVehicle = 1406,--采矿车
+        B_GangCaiGongChang = 1407,--钢材工厂
+        -- B_GangCaiCangKu = 1408,--钢材仓库
+        B_WeiQiang = 1500,--围墙
+        B_YingXingZhaDan = 1600,--隐形炸弹
+        B_XiaoCao = 1700,--小草
+        B_ZhongCao = 1701,--中草
+        B_DaCao = 1702--大草
+};

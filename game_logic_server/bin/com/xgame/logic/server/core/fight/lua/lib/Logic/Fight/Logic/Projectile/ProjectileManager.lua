@@ -1,0 +1,1 @@
+ProjectileManager = class(Object)

@@ -1,0 +1,68 @@
+package com.xgame.logic.server.game.defensesoldier.message;
+import com.xgame.logic.server.game.soldier.bean.SoldierBean;
+import com.xgame.msglib.ReqMessage;
+
+import com.xgame.msglib.able.Communicationable;
+import com.xgame.msglib.annotation.MsgField;
+/** 
+ * @author ProtocolEditor
+ * DefenseSoldier-ReqDefensSolderSetup - 注释
+ */
+public class ReqDefensSolderSetupMessage extends ReqMessage {
+	
+	//模块号+消息号
+	public static final int ID=132300;
+	//模块号
+	public static final int FUNCTION_ID=132;
+	//消息号
+	public static final int MSG_ID=300;
+	
+	/**唯一id*/
+	@MsgField(Id = 1)
+	public int buildUid;
+	/**使用*/
+	@MsgField(Id = 2)
+	public SoldierBean useSoldier;
+		
+	@Override
+	public int getId() {
+		return ID;
+	}
+
+	@Override
+	public String getQueue() {
+		return "s2s";
+	}
+	
+	@Override
+	public String getServer() {
+		return null;
+	}
+	
+	@Override
+	public boolean isSync() {
+		return false;
+	}
+
+	@Override
+	public CommandEnum getCommandEnum() {
+		return Communicationable.CommandEnum.PLAYERMSG;
+	}
+	
+	@Override
+	public HandlerEnum getHandlerEnum() {
+		return Communicationable.HandlerEnum.CS;
+	}
+	
+	@Override
+	public String toString(){
+		StringBuffer buf = new StringBuffer("[");
+		buf.append("buildUid:" + buildUid +",");
+		buf.append("useSoldier:" + useSoldier +",");
+		if(buf.charAt(buf.length()-1)==',') buf.deleteCharAt(buf.length()-1);
+		buf.append("},");
+		if(buf.charAt(buf.length()-1)==',') buf.deleteCharAt(buf.length()-1);
+		buf.append("]");
+		return buf.toString();
+	}
+}

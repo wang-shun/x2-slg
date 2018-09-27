@@ -1,0 +1,4 @@
+ParkT = {
+	NORMAL_PARKING = 1,
+	RELAXED_PARKING = 2,
+}

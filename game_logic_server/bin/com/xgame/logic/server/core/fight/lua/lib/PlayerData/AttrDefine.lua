@@ -1,0 +1,100 @@
+------------------------------------------------------------------------------------------------
+---- library.txt 中的属性定义 ------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+AttrDefine = {
+	power 						= 101,	--提供功率
+	load	 					= 102,	--提供负载
+	power_consume 				= 133,	--消耗功率
+	load_consume	 			= 134,	--消耗负载
+	damage	 					= 104,	--伤害
+	defense	 					= 105,	--防御
+	hp	 						= 106,	--血量
+	electricity_damage	 		= 107,	--电磁伤害
+	electricity_defense	 		= 108,	--电磁抗性
+	energy_damage	 			= 109,	--动能伤害
+	energy_defense	 			= 110,	--动能抗性
+	heat_damage	 				= 111,	--热能伤害
+	heat_defense	 			= 112,	--热能抗性
+	laser_damage	 			= 113,	--激光伤害
+	laser_defense	 			= 114,	--激光抗性
+	hit	 						= 115,	--命中等级
+	dodge	 					= 116,	--闪避等级
+	crit	 					= 117,	--暴击伤害倍数
+	critical	 				= 118,	--暴击等级
+	toughness	 				= 119,	--韧性等级
+	speed_base	 				= 122,	--移动速度
+	speed_fight	 				= 123,	--战斗行军速度
+	speed_monster	 			= 124,	--打怪行军速度
+	speed_gather	 			= 125,	--采集行军速度
+	speed_mass	 				= 135,	--集结行军速度
+	weight	 					= 127,	--采集负重
+	seeking_num	 				= 129,	--索敌数量
+	radar_intensity	 			= 131,	--雷达强度
+	radius	 					= 132,	--车体半径
+	power_per	 				= 201,	--提供功率
+	load_per	 				= 202,	--提供负载
+	power_consume_per	 		= 233,	--消耗功率
+	load_consume_per	 		= 234,	--消耗负载
+	damage_per	 				= 204,	--伤害
+	defense_per	 				= 205,	--防御
+	hp_per	 					= 206,	--血量
+	electricity_damage_per	 	= 207,	--电磁伤害
+	electricity_defense_per	 	= 208,	--电磁抗性
+	energy_damage_per	 		= 209,	--动能伤害
+	energy_defense_per	 		= 210,	--动能抗性
+	heat_damage_per	 			= 211,	--热能伤害
+	heat_defense_per	 		= 212,	--热能抗性
+	laser_damage_per	 		= 213,	--激光伤害
+	laser_defense_per	 		= 214,	--激光抗性
+	hit_per	 					= 215,	--命中等级
+	dodge_per	 				= 216,	--闪避等级
+	crit_per	 				= 217,	--暴击伤害倍数
+	critical_per	 			= 218,	--暴击等级
+	toughness_per	 			= 219,	--韧性等级
+	speed_base_per	 			= 222,	--移动速度
+	speed_fight_per	 			= 223,	--战斗行军速度
+	speed_monster_per	 		= 224,	--打怪行军速度
+	speed_gather_per	 		= 225,	--采集行军速度
+	speed_mass_per	 			= 235,	--集结行军速度
+	weight_per	 				= 227,	--采集负重
+	seeking_num_per	 			= 229,	--索敌数量
+	radar_intensity_per	 		= 231,	--雷达强度
+	radius_per	 				= 232,	--车体半径
+	cash_gather_rate	 		= 305,	--野外黄金采集速度提高
+	oil_gather_rate	 			= 306,	--野外石油采集速度提高
+	earth_gather_rate	 		= 307,	--野外稀土采集速度提高
+	steel_gather_rate	 		= 308,	--野外钢材采集速度提高
+	cash_safeguard_rate	 		= 310,	--黄金仓库保护比例提升
+	earth_safeguard_rate	 	= 311,	--稀土仓库保护比例提升
+	oil_safeguard_rate	 		= 312,	--石油仓库保护比例提升
+	steel_safeguard_rate	 	= 313,	--钢材仓库保护比例提升
+	army_produce_rate	 		= 314,	--装甲生产加速
+	army_spy_march_speed	 	= 319,	--侦察行军加速
+	army_monster_march_time	 	= 320,	--打怪行军时间减少
+	army_gather_march_time	 	= 321,	--采集行军时间减少
+	army_fight_march_time	 	= 322,	--战斗行军时间减少
+	army_spy_march_time	 		= 323,	--侦察行军时间减少
+	army_fight_march_time	 	= 350,	--集结行军时间减少
+	building_time	 			= 324,	--建筑加速
+	hospital_max_num	 		= 326,	--修理厂容量提高
+	hospital_recover_rate	 	= 327,	--装甲修理速度提高
+	match_army_max_num	 		= 328,	--增加带兵量
+	science_time	 			= 329,	--科研加速
+	armory_capacity	 			= 330,	--兵工厂单次生产装甲上限
+	army_consume	 			= 331,	--囤积装甲消耗资源降低
+	army_produce_decrease	 	= 335,	--装甲生产减耗
+	match_queue	 				= 336,	--行军队列增加
+	capacity	 				= 337,	--勘探开发院容量提高
+	concentrate_army	 		= 342,	--集结军队数量
+	building_queue	 			= 343,	--建筑队列增加
+	science_queue	 			= 344,	--科研队列增加
+	car_gather_rate	 			= 351,	--矿车采集速度
+	guard_max_num	 			= 352,	--防守驻军数量
+	help_reduce_building_time	= 353,	--增加军团援建减少的时间（单位分钟，初始值=0）
+	hospital_resource_decrease	= 354, 	--装甲修理减耗
+}
+
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------

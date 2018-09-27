@@ -1,0 +1,5 @@
+dependencies {
+	compile project(':game_common')
+	compile project(':game_data_interface')
+	compile project(':game_data_server')
+}
