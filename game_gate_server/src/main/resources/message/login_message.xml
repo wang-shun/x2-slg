@@ -1,0 +1,7 @@
+<protocols package="com.xgame.gate.server.login" id="118">
+  
+  <message id="200" handlerEnum="CS" sync="false"  className="ReqGameServerInfo" queue="s2s" commandEnum="PLAYERMSG"  explain="请求服务器数据">
+      <field type="String" name="username" explain=""/>
+  </message>
+  
+</protocols>
