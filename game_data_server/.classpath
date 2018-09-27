@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/game_common/lib/db/jedis.jar" sourcepath="/jedis-master"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/game_common"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-aop-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-aspects-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-beans-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-context-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-context-support-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-core-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-expression-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-jdbc-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/spring/spring-test-3.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/lombok.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/commons/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/commons/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/c3p0-0.9.1-pre6.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/fastjson-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/guice-4.0-beta4.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/javassist.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/javax.inject.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/jsr305-3.0.0.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/mysql-connector-java-5.0.7-bin.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/protobuf-java-2.6.1.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/util/reflections-0.9.10.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/log/jcl-over-slf4j-1.7.21.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/log/jul-to-slf4j-1.7.21.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/log/log4j-over-slf4j-1.7.21.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/log/logback-classic-1.1.7.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/log/logback-core-1.1.7.jar"/>
+	<classpathentry kind="lib" path="/game_common/lib/log/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
